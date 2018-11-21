@@ -1,0 +1,25 @@
+{
+  "name": "styleguide_vue",
+  "version": "0.0.1",
+  "description": "Oslo Styleguide - Vue atomic patterns",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslokommune/styleguide_vue.git"
+  },
+  "author": "Oslo kommune",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/oslokommune/styleguide_vue/issues"
+  },
+  "homepage": "https://github.com/oslokommune/styleguide_vue#readme",
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/vue-fontawesome": "^0.1.2",
+    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.5"
+  }
+}
