@@ -1,6 +1,6 @@
 <template>
   <osg-vue-button @click="$emit('toggleState')">
-    <osg-vue-icon :icon="icon" />
+    <osg-vue-icon :iconName="icon" />
     {{ text }}
   </osg-vue-button>
 </template>
@@ -20,8 +20,8 @@
       stateIcons: {
         type: Object,
         default: {
-          on: 'toggle-on',
-          off: 'toggle-off'
+          on: 'chevron-up',
+          off: 'chevron-down'
         }
       },
       text: {
@@ -41,7 +41,3 @@
     }
   }
 </script>
-
-<style lang="sass" scoped>
-
-</style>

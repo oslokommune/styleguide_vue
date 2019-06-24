@@ -1,29 +1,17 @@
 <template>
-  <font-awesome-icon :icon="icon" />
+  <i :class="'osg-u-icon-' + iconName"></i>
 </template>
 
 <script>
-  import { library } from '@fortawesome/fontawesome-svg-core'
-  import { fas } from '@fortawesome/free-solid-svg-icons'
-  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-  library.add(fas)
-
   export default {
     name: 'OsgVueIcon',
-    components: {
-      'font-awesome-icon': FontAwesomeIcon
-    },
 
     props: {
-      icon: {
+      iconName: {
         type: String,
-        required: true
+        default: 'chevron-right',
+        required: false
       }
     }
   }
 </script>
-
-<style lang="sass" scoped>
-
-</style>

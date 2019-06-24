@@ -17,9 +17,6 @@
   },
   "homepage": "https://github.com/oslokommune/styleguide_vue#readme",
   "peerDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.8",
-    "@fortawesome/free-solid-svg-icons": "^5.5.0",
-    "@fortawesome/vue-fontawesome": "^0.1.2",
-    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.5"
+    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.31.0"
   }
 }
