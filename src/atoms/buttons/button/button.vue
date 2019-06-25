@@ -31,7 +31,7 @@
 </script>
 
 <style lang="sass">
-  @import "~styleguide/src/assets/sass/common.sass"
+  @import "~styleguide/src/assets/sass/resources.sass"
   @import "~styleguide/src/atoms/buttons/button/button.sass"
   .osg-vue-button
     [class^=osg-u-icon-]
