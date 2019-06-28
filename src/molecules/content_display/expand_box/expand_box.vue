@@ -5,7 +5,7 @@
   >
     <div class="osg-expand-box__title-line">
       <div class="osg-expand-box__title-line-text">
-        <h3>{{ title }}</h3>
+        <slot name="title" />
       </div>
       <osg-vue-button
         @click="$emit('toggleState')"
@@ -18,13 +18,11 @@
     </div>
     <div
       class="osg-expand-box__content"
-      aria-haspopup="true"
-      :aria-expanded="isExpanded"
       :id="id"
     >
       <div class="osg-content-box osg-v-default ">
         <div class="osg-content-box__container">
-          <slot />
+          <slot name="content" />
         </div>
       </div>
     </div>
@@ -47,11 +45,6 @@
     mixins: [generateUuid],
 
     props: {
-      title: {
-        type: String,
-        required: true
-      },
-
       icons: {
         type: Object,
         default: {
@@ -82,9 +75,7 @@
       },
 
       buttonAttrs() {
-        return {
-          'aria-controls': this.id
-        }
+        return { 'aria-controls': this.id,'aria-expanded': this.isExpanded + '' }
       }
     },
 
@@ -98,7 +89,4 @@
   @import "~styleguide/src/assets/sass/common.sass"
   @import "~styleguide/src/molecules/content_display/content_box/content_box.sass"
   @import "~styleguide/src/molecules/content_display/expand_box/expand_box.sass"
-  .osg-vue-button
-    [class^=osg-u-icon-]
-      margin-right: 10px
 </style>
