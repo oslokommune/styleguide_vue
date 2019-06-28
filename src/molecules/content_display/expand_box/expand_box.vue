@@ -75,7 +75,11 @@
       },
 
       buttonAttrs() {
-        return { 'aria-controls': this.id,'aria-expanded': this.isExpanded + '' }
+        return {
+          'aria-controls': this.id,
+          'aria-expanded': this.isExpanded + '',
+          'aria-label': this.buttonAriaLabel
+        }
       }
     },
 
