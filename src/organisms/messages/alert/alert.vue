@@ -4,18 +4,17 @@
   :class="[{ 'osg-v-open': isOpen }]">
 
   <div class="osg-alert__overlay-wrapper" role="alertdialog" aria-modal="true">
-    <osg-vue-button
-      @click="$emit('closeState')"
-      :is-circle="true"
-      color="yellow"
-      :attrs="buttonAttrs"
-    >
-      <osg-vue-icon :iconName="iconName" />
-    </osg-vue-button>
-
     <div class="osg-alert__overlay">
       <div class="osg-alert__overlay-top">
         <div class="osg-alert__white-space"></div>
+        <osg-vue-button
+          @click="$emit('closeState')"
+          :is-circle="true"
+          color="yellow"
+          :attrs="buttonAttrs"
+        >
+          <osg-vue-icon :iconName="iconName" />
+        </osg-vue-button>
       </div>
       <div class="osg-alert__content osg-content">
         <slot name="title" />
