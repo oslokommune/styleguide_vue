@@ -3,6 +3,16 @@
   class="osg-alert"
   :class="[{ 'osg-v-open': isOpen }]">
 
+  <a class="osg-alert__trigger"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="Amet sit ipsum"
+    id="lorem_ipsum"
+    @click="$emit('toggleAlert')"
+  >
+    <slot />
+  </a>
+
   <div class="osg-alert__overlay-wrapper"
     role="alertdialog"
     aria-modal="true"
@@ -13,7 +23,7 @@
       <div class="osg-alert__overlay-top">
         <div class="osg-alert__white-space"></div>
         <osg-vue-button
-          @click="$emit('closeState')"
+          @click="$emit('toggleAlert')"
           :is-circle="true"
           color="yellow"
           :attrs="buttonAttrs"
@@ -22,12 +32,13 @@
         </osg-vue-button>
       </div>
       <div class="osg-alert__content osg-content">
-        <slot name="title" />
-        <slot name="content" />
+        <slot name="alertContent" />
       </div>
     </div>
   </div>
 </div>
+
+
 
 </template>
 
