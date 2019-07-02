@@ -3,7 +3,12 @@
   class="osg-alert"
   :class="[{ 'osg-v-open': isOpen }]">
 
-  <div class="osg-alert__overlay-wrapper" role="alertdialog" aria-modal="true">
+  <div class="osg-alert__overlay-wrapper"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="alert-title"
+    aria-describedby="alert-content"
+  >
     <div class="osg-alert__overlay">
       <div class="osg-alert__overlay-top">
         <div class="osg-alert__white-space"></div>
