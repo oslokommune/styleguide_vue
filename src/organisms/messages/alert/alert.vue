@@ -13,8 +13,8 @@
     <div class="osg-alert__overlay-wrapper"
       role="alertdialog"
       aria-modal="true"
-      aria-labelledby="alert-title"
-      aria-describedby="alert-content"
+      :aria-labelledby="buttonAriaLabelledBy"
+      :aria-describedby="buttonAriaDescribedBy"
     >
       <div class="osg-alert__overlay">
         <div class="osg-alert__overlay-top">
@@ -71,8 +71,17 @@
         type: String,
         required: false,
         default: 'yellow'
-      }
+      },
 
+      buttonAriaLabelledBy: {
+        type: String,
+        required: false
+      },
+
+      buttonAriaDescribedBy: {
+        type: String,
+        required: false
+      }
     },
 
     computed: {
