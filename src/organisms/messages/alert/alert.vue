@@ -3,7 +3,7 @@
     class="osg-alert"
     :class="[{ 'osg-v-open': isOpen }]">
 
-    <a href="#"
+    <a href="javascript:void(0);"
       class="osg-alert__trigger"
       @click="$emit('toggleAlert')"
     >
