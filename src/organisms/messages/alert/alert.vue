@@ -22,7 +22,7 @@
           <osg-vue-button
             @click="$emit('toggleAlert')"
             :is-circle="true"
-            color="yellow"
+            :color="buttonColor"
             :attrs="buttonAttrs"
           >
             <osg-vue-icon :iconName="iconName" />
@@ -65,7 +65,14 @@
       buttonAriaLabel: {
         type: String,
         required: true
+      },
+
+      buttonColor: {
+        type: String,
+        required: false,
+        default: 'yellow'
       }
+
     },
 
     computed: {
