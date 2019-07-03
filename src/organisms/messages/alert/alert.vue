@@ -25,7 +25,7 @@
             :color="buttonColor"
             :attrs="buttonAttrs"
           >
-            <osg-vue-icon :iconName="iconName" />
+            <osg-vue-icon :iconName="icon" />
           </osg-vue-button>
         </div>
         <div class="osg-alert__content osg-content">
@@ -49,8 +49,8 @@
     },
 
     props: {
-      icons: {
-        type: Object,
+      icon: {
+        type: String,
         required: true
       },
 
@@ -82,10 +82,6 @@
     },
 
     computed: {
-      iconName() {
-        return this.icons.close
-      },
-
       buttonAttrs() {
         return {
           'aria-label': this.buttonAriaLabel
