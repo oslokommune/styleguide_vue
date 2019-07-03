@@ -13,8 +13,8 @@
     <div class="osg-alert__overlay-wrapper"
       role="alertdialog"
       aria-modal="true"
-      :aria-labelledby="buttonAriaLabelledBy"
-      :aria-describedby="buttonAriaDescribedBy"
+      :aria-labelledby="alertAriaLabelledBy"
+      :aria-describedby="alertAriaDescribedBy"
     >
       <div class="osg-alert__overlay">
         <div class="osg-alert__overlay-top">
