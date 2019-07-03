@@ -51,9 +51,6 @@
     props: {
       icons: {
         type: Object,
-        default: {
-          close: 'x'
-        },
         required: true
       },
 
