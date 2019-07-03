@@ -3,9 +3,9 @@
     class="osg-alert"
     :class="[{ 'osg-v-open': isOpen }]">
 
-    <a href="javascript:void(0);"
+    <a href="#"
       class="osg-alert__trigger"
-      @click="$emit('toggleAlert')"
+      @click.prevent="$emit('toggleAlert')"
     >
       <slot />
     </a>
