@@ -38,7 +38,8 @@
 
     props: {
       url: {
-        type: String
+        type: String,
+        default: null
       },
 
       urlTitle: {
@@ -47,7 +48,7 @@
 
       target: {
         type: String,
-        default: '_self'
+        default: null
       },
 
       isCircle: {
@@ -63,19 +64,6 @@
       contentPositionTablet: {
         type: String,
         default: 'right'
-      },
-
-      url: {
-        type: String
-      },
-
-      urlTitle: {
-        type: String
-      },
-
-      target: {
-        type: String,
-        default: '_self'
       },
 
       imageUrl: {
