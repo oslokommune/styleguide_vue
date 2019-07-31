@@ -45,7 +45,7 @@
 
       target: {
         type: String,
-        default: '_self'
+        default: null
       },
 
       imageUrl: {
