@@ -107,7 +107,6 @@
 
 <style lang="sass">
   @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/assets/sass/common/_utils.sass"
   @import "~styleguide/src/atoms/decorators/shape/shape.sass"
   @import "~styleguide/src/organisms/navigation/hero/hero.sass"
 </style>
