@@ -1,27 +1,14 @@
 <template>
-  <div
+  <a
+    :is="url ? 'a' : 'div'"
+    :href="url"
+    :title="urlTitle"
+    :target="target"
     class="osg-shape"
     :class="[{ 'osg-v-circle': isCircle }, {'osg-v-image': imageUrl }]"
   >
-    <a
-      v-if="url"
-      :href="url"
-      :title="urlTitle"
-      :target="target"
-    >
-      <osg-vue-figure
-        v-if="imageUrl"
-        :url="imageUrl"
-        :url-mobile="imageUrlMobile"
-        :url-tablet="imageUrlTablet"
-        :url-desktop="imageUrlDesktop"
-        :caption="imageCaption"
-        :sr-description="imageSrDescription"
-      />
-      <slot v-else />
-    </a>
     <osg-vue-figure
-      v-else-if="imageUrl"
+      v-if="imageUrl"
       :url="imageUrl"
       :url-mobile="imageUrlMobile"
       :url-tablet="imageUrlTablet"
@@ -29,8 +16,8 @@
       :caption="imageCaption"
       :sr-description="imageSrDescription"
     />
-    <slot v-if="!imageUrl" />
-  </div>
+    <slot v-else />
+  </a>
 </template>
 
 <script>
