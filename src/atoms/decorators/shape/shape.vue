@@ -15,7 +15,9 @@
       :url-desktop="imageUrlDesktop"
       :caption="imageCaption"
       :sr-description="imageSrDescription"
-    />
+    >
+      <slot />
+    </osg-vue-figure>
     <slot v-else />
   </a>
 </template>
