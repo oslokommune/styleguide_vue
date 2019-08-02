@@ -70,12 +70,12 @@
         default: 'yellow'
       },
 
-      buttonAriaLabelledBy: {
+      alertAriaLabelledBy: {
         type: String,
         required: false
       },
 
-      buttonAriaDescribedBy: {
+      alertAriaDescribedBy: {
         type: String,
         required: false
       }
