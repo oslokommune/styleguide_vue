@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/oslokommune/styleguide_vue#readme",
   "peerDependencies": {
-    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.31.1"
+    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.31.2"
   }
 }
