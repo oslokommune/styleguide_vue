@@ -1,5 +1,5 @@
 <template>
-  <div class="osg-content-box osg-v-default ">
+  <div class="osg-content-box">
     <div class="osg-content-box__container">
       <slot />
     </div>
