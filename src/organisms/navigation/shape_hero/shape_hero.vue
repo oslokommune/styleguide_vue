@@ -5,7 +5,11 @@
       { 'osg-v-circle': isCircle }
     ]"
   >
-    <osg-vue-shape>
+    <osg-vue-shape
+      :class="[
+        'osg-u-color-bg-' + mainColor
+      ]"
+    >
       <div class="osg-shape-hero__content">
         <slot />
       </div>
@@ -22,10 +26,14 @@
         v-if="!isCircle"
         class="osg-shape-hero__circle-shape"
         :class="[
-          'osg-u-color-bg-' + bgColor
+          'osg-u-color-bg-' + circleBgColor
         ]"
       >
-        <osg-vue-shape />
+        <osg-vue-shape
+          :class="[
+            'osg-u-color-bg-' + circleColor
+          ]"
+        />
       </div>
     </osg-vue-shape>
   </div>
@@ -46,7 +54,17 @@
         default: false
       },
 
-      bgColor: {
+      mainColor: {
+        type: String,
+        default: 'yellow'
+      },
+
+      circleColor: {
+        type: String,
+        default: 'yellow'
+      },
+
+      circleBgColor: {
         type: String,
         default: 'white'
       },
