@@ -1,13 +1,20 @@
 <template>
-  <div class="osg-menu"
+  <div
+    class="osg-menu"
     :class="[{ 'osg-menu--open': isOpen }]"
   >
     <osg-vue-button
-        @click="$emit('toggleState')"
-        class="osg-button-hamburger osg-button--outline"
+      @click="$emit('toggleState')"
+      class="osg-button-hamburger osg-button--outline"
     >
-      <span class="osg-menu__button__text-close" v-if="isOpen">{{ menuTextClose }}</span>
-      <span class="osg-menu__button__text">{{ menuText }}</span>
+      <span
+        class="osg-menu__button__text-close"
+        v-if="isOpen">
+        {{ menuTextClose }}
+      </span>
+      <span class="osg-menu__button__text">
+        {{ menuText }}
+      </span>
       <span class="osg-menu__button__icon">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
