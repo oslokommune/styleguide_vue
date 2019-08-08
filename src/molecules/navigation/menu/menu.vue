@@ -16,12 +16,12 @@
         <span class="osg-menu__button__text">
           {{ menuText }}
         </span>
+        <span class="osg-menu__button__icon">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </span>
       </slot>
-      <span class="osg-menu__button__icon">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </span>
     </osg-vue-button>
 
     <slot name="otherContent" />
