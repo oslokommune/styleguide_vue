@@ -7,14 +7,16 @@
       @click="$emit('toggleState')"
       class="osg-button-hamburger osg-button--outline"
     >
-      <span
-        class="osg-menu__button__text-close"
-        v-if="isOpen">
-        {{ menuTextClose }}
-      </span>
-      <span class="osg-menu__button__text">
-        {{ menuText }}
-      </span>
+      <slot name="content">
+        <span
+          class="osg-menu__button__text-close"
+          v-if="isOpen">
+          {{ menuTextClose }}
+        </span>
+        <span class="osg-menu__button__text">
+          {{ menuText }}
+        </span>
+      </slot>
       <span class="osg-menu__button__icon">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
