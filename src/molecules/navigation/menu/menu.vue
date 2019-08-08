@@ -23,9 +23,6 @@
         </span>
       </slot>
     </osg-vue-button>
-
-    <slot name="otherContent" />
-
   </div>
 </template>
 
