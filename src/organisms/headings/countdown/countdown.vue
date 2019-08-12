@@ -1,7 +1,13 @@
 <template>
-  <div class="osg-countdown">
+  <div
+    v-if="timeDiff > 0"
+    class="osg-countdown"
+  >
     <h2>{{ title }}</h2>
-    <vue-countdown :time="timeDiff">
+    <vue-countdown
+      :time="timeDiff"
+      tag="div"
+    >
       <template slot-scope="props">
         <div class="osg-countdown__timing">
           <div class="osg-countdown__days">
@@ -35,7 +41,8 @@
 
     props: {
       countDownTo: {
-        type: String
+        type: String,
+        required: true
       },
 
       title: {
@@ -77,5 +84,11 @@
   @import "~styleguide/src/assets/sass/common/_utils.sass"
   @import "~styleguide/src/organisms/headings/countdown/countdown.sass"
 </style>
+
+<style lang="sass" scoped>
+.osg-countdown > div
+  flex-basis: 40%
+</style>
+
 
 
