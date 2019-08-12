@@ -1,24 +1,24 @@
 <template>
   <div class="osg-countdown">
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <h2>{{ title }}</h2>
     <vue-countdown :time="timeDiff">
       <template slot-scope="props">
         <div class="osg-countdown__timing">
           <div class="osg-countdown__days">
             <span>{{ props.days }}</span>
-            <span>Dager</span>
+            <span>{{ langDays }}</span>
           </div>
           <div class="osg-countdown__hours">
             <span>{{ props.hours }}</span>
-            <span>Timer</span>
+            <span>{{ langHours }}</span>
           </div>
           <div class="osg-countdown__minutes">
             <span>{{ props.minutes }}</span>
-            <span>Minutter</span>
+            <span>{{ langMinutes }}</span>
           </div>
           <div class="osg-countdown__seconds">
             <span>{{ props.seconds }}</span>
-            <span>Sekunder</span>
+            <span>{{ langSeconds }}</span>
           </div>
         </div>
       </template>
@@ -36,6 +36,31 @@
     props: {
       countDownTo: {
         type: String
+      },
+
+      title: {
+        type: String,
+        required: true
+      },
+
+      langDays: {
+        type: String,
+        required: true
+      },
+
+      langHours: {
+        type: String,
+        required: true
+      },
+
+      langMinutes: {
+        type: String,
+        required: true
+      },
+
+      langSeconds: {
+        type: String,
+        required: true
       }
     },
 
