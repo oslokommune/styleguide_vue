@@ -86,6 +86,7 @@
 </style>
 
 <style lang="sass" scoped>
+// stylefix for the extra element that vue-countdown adds
 .osg-countdown > div
   flex-basis: 40%
 </style>
