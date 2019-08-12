@@ -9,6 +9,7 @@
     <figcaption v-if="caption" class="osg-figcaption">
       {{ caption }}
     </figcaption>
+    <slot />
   </figure>
 </template>
 

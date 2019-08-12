@@ -18,7 +18,7 @@
         :image-url-tablet="imageUrlTablet"
         :image-url-desktop="imageUrlDesktop"
         :image-caption="imageCaption"
-        image-sr-description="Descriptive text for screen readers"
+        :image-sr-description="imageSrDescription"
       />
     </div>
     <div class="osg-hero__content">
