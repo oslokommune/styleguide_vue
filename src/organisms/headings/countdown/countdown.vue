@@ -1,7 +1,7 @@
 <template>
   <div class="osg-countdown">
     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-    <vue-countdown :time="2 * 24 * 60 * 60 * 1000">
+    <vue-countdown :time="timeDiff">
       <template slot-scope="props">
         <div class="osg-countdown__timing">
           <div class="osg-countdown__days">
@@ -40,7 +40,9 @@
     },
 
     computed: {
-
+      timeDiff() {
+        return new Date(this.countDownTo) - new Date()
+      }
     }
   }
 </script>
