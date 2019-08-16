@@ -29,10 +29,14 @@
       </osg-vue-button>
 
       <slot name="menuOtherLinks">
+        <div class="osg-other-links">
+          {{ menuOtherLinks }}
+        </div>
       </slot>
 
       <div class="osg-expanded-content">
         <slot name="menuListExpanded">
+          {{ menuListExpanded }}
         </slot>
       </div>
     </nav>
@@ -67,6 +71,16 @@
       },
 
       menuTextClose: {
+        type: String,
+        required: true
+      },
+
+      menuOtherLinks: {
+        type: String,
+        required: true
+      },
+
+      menuListExpanded: {
         type: String,
         required: true
       },
