@@ -15,9 +15,11 @@
           <span
             class="osg-hamburger-button__text-close"
             v-if="isExpanded">
-            {{ menuTextClose }}
+            Close menu
           </span>
-          <span class="osg-hamburger-button__text">
+          <span
+            class="osg-hamburger-button__text"
+            v-if="!isExpanded">
             {{ menuText }}
           </span>
         </slot>
