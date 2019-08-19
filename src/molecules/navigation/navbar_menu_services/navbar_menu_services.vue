@@ -8,18 +8,16 @@
   >
     <nav>
       <osg-vue-button
-        @click="$emit('toggleState')"
+        @click="$emit('navbarMenuServicesClicked')"
         class="osg-hamburger-button osg-button--outline"
       >
         <slot name="content">
           <span
             class="osg-hamburger-button__text-close"
             v-if="isExpanded">
-            Close menu
+            {{ srMenuTextClose}}
           </span>
-          <span
-            class="osg-hamburger-button__text"
-            v-if="!isExpanded">
+          <span class="osg-hamburger-button__text">
             {{ menuText }}
           </span>
         </slot>
@@ -43,7 +41,7 @@
   import OsgVueButton from '../../../atoms/buttons/button/button'
 
   export default {
-    name: 'OsgVueMenu',
+    name: 'OsgVueNavbarMenuServices',
 
     components: {
       OsgVueButton
@@ -65,20 +63,11 @@
         required: true
       },
 
-      menuTextClose: {
+      srMenuTextClose: {
         type: String,
-        required: true
-      },
-
-      menuOtherLinks: {
-        type: String,
-        required: true
-      },
-
-      menuListExpanded: {
-        type: String,
-        required: true
-      },
+        required: true,
+        default: "Close menu"
+      }
     }
   }
 </script>
