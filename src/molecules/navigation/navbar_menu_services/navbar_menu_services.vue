@@ -28,17 +28,12 @@
         </span>
       </osg-vue-button>
 
-      <slot name="menuOtherLinks">
-        <div class="osg-other-links">
-          {{ menuOtherLinks }}
+      <slot>
+        <div class="osg-expanded-content">
+          {{ menuListExpanded }}
         </div>
       </slot>
 
-      <div class="osg-expanded-content">
-        <slot name="menuListExpanded">
-          {{ menuListExpanded }}
-        </slot>
-      </div>
     </nav>
     <div class="osg-overlay"></div>
   </div>
