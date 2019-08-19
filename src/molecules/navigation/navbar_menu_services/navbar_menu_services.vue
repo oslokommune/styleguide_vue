@@ -63,10 +63,14 @@
         required: true
       },
 
+      menuListExpanded: {
+        type: String,
+        required: true
+      },
+
       srMenuTextClose: {
         type: String,
-        required: true,
-        default: "Close menu"
+        required: true
       }
     }
   }
