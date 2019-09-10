@@ -1,0 +1,39 @@
+.carousel {
+  .osg-figure {
+    position: relative;
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+
+      .previous-image-button {
+        transform: rotate(180deg);
+      }
+
+      .next-image-button {
+      }
+    }  
+
+    .shapes {
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      
+      .squared-shape {
+        width: 50%;
+        height: 149px;
+        width: 149px;
+      }
+
+      .circular-shape {
+        height: 149px;
+        width: 149px;
+      }
+    }
+  }
+}
