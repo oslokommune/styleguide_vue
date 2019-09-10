@@ -5,6 +5,7 @@
       :url-mobile="imageUrlMobile"
       :url-tablet="imageUrlTablet"
       :url-desktop="imageUrlDesktop"
+      :caption="imageArray[current].imageCaption"
       :sr-description="imageArray[current].imageCaption"
     >
       <div class="navigation">
@@ -14,7 +15,7 @@
           :is-circle="true"
           :color="navigationArrowColor"
         >
-          <osg-vue-icon :iconName="iconName" />
+          <osg-vue-icon :iconName="icons.previousIcon" />
         </osg-vue-button>
 
         <osg-vue-button
@@ -22,7 +23,7 @@
           :is-circle="true"
           :color="navigationArrowColor"
         >
-          <osg-vue-icon :iconName="iconName" />
+          <osg-vue-icon :iconName="icons.nextIcon" />
         </osg-vue-button>
       </div>
 
@@ -30,7 +31,7 @@
         <osg-vue-shape
           :class="[
             'squared-shape',
-            `osg-u-color-bg-${squareColor}` // TODO: Fix this
+            `osg-u-color-bg-${squareColor}` 
           ]"
         />
 
@@ -38,12 +39,24 @@
           :class="[
             'circular-shape',
             'osg-v-circle',
-            `osg-u-color-bg-${circleColor}` // TODO: Fix this
+            `osg-u-color-bg-${circleColor}`
           ]"
         />
       </div>
 
     </osg-vue-figure>
+    <div class="osg-carousel-icons osg-u-margin-top-2">
+      <osg-vue-shape
+        v-for="(image, index) in images"
+        v-bind:key="image.imageUrl"
+        @click.native="setCurrentImage(index)"
+        :class="[
+          'osg-carousel-icon',
+          current === index ? 'osg-carousel-current' : 'osg-v-circle',
+        ]"
+      />
+    </div>
+
   </div>
 </template>
 
@@ -63,13 +76,12 @@
       OsgVueIcon
     },
 
-    // Fix icons
     props: {
       icons: {
         type: Object,
         default: {
-          expanded: 'chevron-up',
-          collapsed: 'chevron-down'
+          previousIcon: 'chevron-right',
+          nextIcon: 'chevron-right'
         },
         required: true
       },
@@ -118,7 +130,10 @@
 
     data: () => ({
       current: 0,
-      imageArray: [],
+      imageArray: [{
+        imageUrl: "",
+        imageCaption: "",
+      }],
     }),
 
     mounted() {
@@ -139,11 +154,11 @@
         
 
         if (infiniteScrolling) {
-          if (currentIndex - 1 < 0) this.current = imageArrayElements;
-          else this.current = currentIndex - 1;
+          if (currentIndex - 1 < 0) this.current = imageArrayElements
+          else this.current = currentIndex - 1
 
         } else if (!infiniteScrolling) {
-          if (currentIndex - 1 > 0) this.current = currentIndex - 1; 
+          if (currentIndex - 1 > 0) this.current = currentIndex - 1
         }
       },
 
@@ -153,20 +168,23 @@
         const imageArrayElements = this.imageArray.length - 1
 
         if (infiniteScrolling) {
-          if (currentIndex + 1 === imageArrayElements) this.current = 0
-          else this.current = currentIndex + 1;
+          if (currentIndex === imageArrayElements) this.current = 0
+          else this.current = currentIndex + 1
 
         } else if (!infiniteScrolling) {
-          if (currentIndex + 1 <= imageArrayElements) this.current = currentIndex + 1;
+          if (currentIndex + 1 <= imageArrayElements) this.current = currentIndex + 1
         }
       },
+
+      setCurrentImage(number) {
+        const currentIndex = this.current
+        if (currentIndex !== number) this.current = number
+      }
     }
   }
 </script>
 
 <style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/assets/sass/common/_utils.sass"
   @import "./carousel.scss"
 </style>
 

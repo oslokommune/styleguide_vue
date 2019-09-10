@@ -1,6 +1,14 @@
+@import "~styleguide/src/assets/sass/resources.sass";
+@import "~styleguide/src/assets/sass/common/_utils.sass";
+
 .carousel {
   .osg-figure {
     position: relative;
+
+    figcaption {
+      position: absolute;
+      margin-left: 240px;
+    }
 
     .navigation {
       display: flex;
@@ -11,9 +19,6 @@
 
       .previous-image-button {
         transform: rotate(180deg);
-      }
-
-      .next-image-button {
       }
     }  
 
@@ -34,6 +39,22 @@
         height: 149px;
         width: 149px;
       }
+    }
+  }
+  
+  .osg-carousel-icons {
+      margin-left: 5px;
+      
+    .osg-carousel-icon {
+      width: 10px;
+      height: 10px;
+      min-width: 10px;
+      margin: 10px 5px;
+      background-color: $osg-color-beige;
+    }
+
+    .osg-carousel-current {
+      background-color: $osg-color-blue-dark;
     }
   }
 }
