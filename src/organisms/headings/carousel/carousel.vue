@@ -5,7 +5,6 @@
       :url-mobile="imageUrlMobile"
       :url-tablet="imageUrlTablet"
       :url-desktop="imageUrlDesktop"
-      :caption="imageArray[current].imageCaption"
       :sr-description="imageArray[current].imageCaption"
     >
       <div class="osg-carousel-navigation">
@@ -47,17 +46,22 @@
 
 
     </osg-vue-figure>
-    <span class="osg-carousel-icons osg-u-margin-top-2" ref="carouselIcons">
-      <osg-vue-shape
-        v-for="(image, index) in images"
-        v-bind:key="image.imageUrl"
-        @click.native="setCurrentImage(index)"
-        :class="[
-          'osg-carousel-icon',
-          current === index ? 'osg-carousel-current' : 'osg-v-circle',
-        ]"
-      />
-    </span>
+    <div class="osg-carousel-info osg-u-margin-top-2">
+      <span class="osg-carousel-icons">
+        <osg-vue-shape
+          v-for="(image, index) in images"
+          v-bind:key="image.imageUrl"
+          @click.native="setCurrentImage(index)"
+          :class="[
+            'osg-carousel-icon',
+            current === index ? 'osg-carousel-current' : 'osg-v-circle',
+          ]"
+        />
+      </span>
+      <span>
+        {{ imageArray[current].imageCaption}}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -139,15 +143,9 @@
       mobileWidth: 0,
     }),
 
-    ready() {
-      document.addEventListener("resize", this.isMobileWindowWidth)
-      this.isMobileWindowWidth()
-    },
 
     mounted() {
       this.imageArray = this.images 
-      this.carouselIconsWidth = this.$refs.carouselIcons.getBoundingClientRect().width
-      this.isMobileWindowWidth()
     },
 
     computed: {
@@ -156,27 +154,12 @@
       },
     },
 
-    updated() {
-      this.isMobileWindowWidth()
-      console.log(this.carouselIconsWidth, window.innerWidth)
-
-      // Get the first and only DOM element of the osg-figcaption class and position it dynamically
-      const figCaptionElement = document.getElementsByClassName("osg-figcaption")[0]
-      if (!this.mobileWidth) figCaptionElement.style = `margin-left: ${this.carouselIconsWidth + 10}px; margin-top: 5px`
-      else if (this.mobileWidth) figCaptionElement.style = "margin-left: 0; margin-top: 5px";
-    },
-
-    beforeDestroy() {
-      document.removeEventListener("resize", this.isMobileWindowWidth)
-    },
-
     methods: {
       getPreviousImage() {
         const currentIndex = this.current
         const infinite = this.infinite
         const imageArrayElements = this.imageArray.length - 1
         
-
         if (infinite) {
           if (currentIndex - 1 < 0) this.current = imageArrayElements
           else this.current = currentIndex - 1
@@ -204,12 +187,6 @@
         const currentIndex = this.current
         if (currentIndex !== number) this.current = number
       },
-
-      isMobileWindowWidth() {
-        console.log(window.innerWidth)
-        console.log(parseInt(window.innerWidth) <= parseInt(768))
-        this.mobileWidth = parseInt(window.innerWidth) <= parseInt(768);
-      }
     }
   }
 </script>

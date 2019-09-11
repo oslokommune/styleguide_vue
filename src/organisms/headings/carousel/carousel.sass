@@ -53,17 +53,21 @@
         height: 149px
         width: 149px
 
-  .osg-carousel-icons 
-    margin-left: 5px
+  .osg-carousel-info
     +osg-mq-mobile-only
-      display: none
+      margin-left: 20px
 
-    .osg-carousel-icon
-      width: 10px
-      height: 10px
-      min-width: 10px
-      margin: 10px 5px
-      background-color: $osg-color-beige
+    .osg-carousel-icons 
+      margin-left: 5px
+      +osg-mq-mobile-only
+        display: none
 
-    .osg-carousel-current 
-      background-color: $osg-color-blue-dark
+      .osg-carousel-icon
+        width: 10px
+        height: 10px
+        min-width: 10px
+        margin: 10px 5px
+        background-color: $osg-color-beige
+
+      .osg-carousel-current 
+        background-color: $osg-color-blue-dark
