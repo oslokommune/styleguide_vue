@@ -1,11 +1,11 @@
 <template>
   <div class="osg-carousel">
     <osg-vue-figure
-      :url="imageArray[current].imageUrl"
-      :url-mobile="imageUrlMobile"
-      :url-tablet="imageUrlTablet"
-      :url-desktop="imageUrlDesktop"
-      :sr-description="imageArray[current].imageCaption"
+      :url="currentImage.imageUrl"
+      :url-mobile="currentImage.imageUrlMobile || currentImage.imageUrl"
+      :url-tablet="currentImage.imageUrlTablet || currentImage.imageUrl"
+      :url-desktop="currentImage.imageUrlDesktop || currentImage.imageUrl"
+      :sr-description="currentImage.imageCaption"
     >
       <div class="osg-carousel-navigation">
         <osg-vue-button
@@ -59,7 +59,7 @@
         />
       </span>
       <span>
-        {{ imageArray[current].imageCaption}}
+        {{ currentImage.imageCaption }}
       </span>
     </div>
   </div>
@@ -91,18 +91,6 @@
         required: true
       },
       
-      imageUrlMobile: {
-        type: String
-      },
-
-      imageUrlTablet: {
-        type: String
-      },
-
-      imageUrlDesktop: {
-        type: String
-      },
-
       imageSrDescription: {
         type: String
       },
@@ -140,18 +128,19 @@
         imageUrl: "",
         imageCaption: "",
       }],
-      mobileWidth: 0,
+      currentImage: {
+        imageUrl: "",
+        imageCaption: "",
+      }
     }),
 
-
     mounted() {
-      this.imageArray = this.images 
+      this.imageArray = this.images
+      this.currentImage = this.imageArray[this.current]
     },
 
-    computed: {
-      getCurrentImage() {
-        return this.imageArray[this.current]
-      },
+    updated() {
+      this.currentImage = this.imageArray[this.current]
     },
 
     methods: {
