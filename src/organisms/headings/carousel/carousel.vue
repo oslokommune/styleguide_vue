@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel">
+  <div class="osg-carousel">
     <osg-vue-figure
       :url="imageArray[current].imageUrl"
       :url-mobile="imageUrlMobile"
@@ -8,10 +8,10 @@
       :caption="imageArray[current].imageCaption"
       :sr-description="imageArray[current].imageCaption"
     >
-      <div class="navigation">
+      <div class="osg-carousel-navigation">
         <osg-vue-button
           v-on:click="getPreviousImage"
-          class="previous-image-button"
+          class="osg-carousel-previous-button"
           :is-circle="true"
           :color="navigationArrowColor"
         >
@@ -20,6 +20,7 @@
 
         <osg-vue-button
           v-on:click="getNextImage"
+          class="osg-carousel-next-button"
           :is-circle="true"
           :color="navigationArrowColor"
         >
@@ -27,25 +28,26 @@
         </osg-vue-button>
       </div>
 
-      <div class="shapes">
+      <div class="osg-carousel-shapes">
         <osg-vue-shape
           :class="[
-            'squared-shape',
+            'osg-squared-shape',
             `osg-u-color-bg-${squareColor}` 
           ]"
         />
 
         <osg-vue-shape
           :class="[
-            'circular-shape',
+            'osg-circular-shape',
             'osg-v-circle',
             `osg-u-color-bg-${circleColor}`
           ]"
         />
       </div>
 
+
     </osg-vue-figure>
-    <div class="osg-carousel-icons osg-u-margin-top-2">
+    <span class="osg-carousel-icons osg-u-margin-top-2" ref="carouselIcons">
       <osg-vue-shape
         v-for="(image, index) in images"
         v-bind:key="image.imageUrl"
@@ -55,8 +57,7 @@
           current === index ? 'osg-carousel-current' : 'osg-v-circle',
         ]"
       />
-    </div>
-
+    </span>
   </div>
 </template>
 
@@ -122,7 +123,7 @@
         default: "yellow"
       },
 
-      infiniteScrolling: {
+      infinite: {
         type: Boolean,
         default: false
       }
@@ -130,14 +131,23 @@
 
     data: () => ({
       current: 0,
+      carouselIconsWidth: 0,
       imageArray: [{
         imageUrl: "",
         imageCaption: "",
       }],
+      mobileWidth: 0,
     }),
 
+    ready() {
+      document.addEventListener("resize", this.isMobileWindowWidth)
+      this.isMobileWindowWidth()
+    },
+
     mounted() {
-      this.imageArray = this.images
+      this.imageArray = this.images 
+      this.carouselIconsWidth = this.$refs.carouselIcons.getBoundingClientRect().width
+      this.isMobileWindowWidth()
     },
 
     computed: {
@@ -146,32 +156,46 @@
       },
     },
 
+    updated() {
+      this.isMobileWindowWidth()
+      console.log(this.carouselIconsWidth, window.innerWidth)
+
+      // Get the first and only DOM element of the osg-figcaption class and position it dynamically
+      const figCaptionElement = document.getElementsByClassName("osg-figcaption")[0]
+      if (!this.mobileWidth) figCaptionElement.style = `margin-left: ${this.carouselIconsWidth + 10}px; margin-top: 5px`
+      else if (this.mobileWidth) figCaptionElement.style = "margin-left: 0; margin-top: 5px";
+    },
+
+    beforeDestroy() {
+      document.removeEventListener("resize", this.isMobileWindowWidth)
+    },
+
     methods: {
       getPreviousImage() {
         const currentIndex = this.current
-        const infiniteScrolling = this.infiniteScrolling
+        const infinite = this.infinite
         const imageArrayElements = this.imageArray.length - 1
         
 
-        if (infiniteScrolling) {
+        if (infinite) {
           if (currentIndex - 1 < 0) this.current = imageArrayElements
           else this.current = currentIndex - 1
 
-        } else if (!infiniteScrolling) {
-          if (currentIndex - 1 > 0) this.current = currentIndex - 1
+        } else if (!infinite) {
+          if (currentIndex - 1 >= 0) this.current = currentIndex - 1
         }
       },
 
       getNextImage() {
         const currentIndex = this.current
-        const infiniteScrolling = this.infiniteScrolling
+        const infinite = this.infinite
         const imageArrayElements = this.imageArray.length - 1
 
-        if (infiniteScrolling) {
+        if (infinite) {
           if (currentIndex === imageArrayElements) this.current = 0
           else this.current = currentIndex + 1
 
-        } else if (!infiniteScrolling) {
+        } else if (!infinite) {
           if (currentIndex + 1 <= imageArrayElements) this.current = currentIndex + 1
         }
       },
@@ -179,13 +203,19 @@
       setCurrentImage(number) {
         const currentIndex = this.current
         if (currentIndex !== number) this.current = number
+      },
+
+      isMobileWindowWidth() {
+        console.log(window.innerWidth)
+        console.log(parseInt(window.innerWidth) <= parseInt(768))
+        this.mobileWidth = parseInt(window.innerWidth) <= parseInt(768);
       }
     }
   }
 </script>
 
 <style lang="sass">
-  @import "./carousel.scss"
+  @import "./carousel.sass"
 </style>
 
 
