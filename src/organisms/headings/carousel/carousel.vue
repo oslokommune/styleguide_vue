@@ -29,6 +29,7 @@
 
       <div class="osg-carousel__shapes">
         <osg-vue-shape
+          v-if="hasSquaredShape"
           :class="[
             'osg-carousel__squared-shape',
             `osg-u-color-bg-${squareColor}` 
@@ -36,14 +37,16 @@
         />
 
         <osg-vue-shape
+          v-if="hasCircularShape"
           :class="[
             'osg-carousel__circular-shape',
             'osg-v-circle',
             `osg-u-color-bg-${circleColor}`
           ]"
         />
-      </div>
 
+        <slot></slot>
+      </div>
 
     </osg-vue-figure>
     <div class="osg-carousel__info osg-u-margin-top-2">
@@ -98,6 +101,16 @@
       images: {
         type: Array,
         required: true
+      },
+
+      hasSquaredShape: {
+        type: Boolean,
+        default: 'true'
+      },
+
+      hasCircularShape: {
+        type: Boolean,
+        default: 'true'
       },
 
       circleColor: {
