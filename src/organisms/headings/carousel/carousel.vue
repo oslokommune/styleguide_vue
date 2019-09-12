@@ -7,10 +7,10 @@
       :url-desktop="currentImage.imageUrlDesktop || currentImage.imageUrl"
       :sr-description="currentImage.imageCaption"
     >
-      <div class="osg-carousel-navigation">
+      <div class="osg-carousel__navigation">
         <osg-vue-button
           v-on:click="getPreviousImage"
-          class="osg-carousel-previous-button"
+          class="osg-carousel__previous-button"
           :is-circle="true"
           :color="navigationArrowColor"
         >
@@ -19,7 +19,7 @@
 
         <osg-vue-button
           v-on:click="getNextImage"
-          class="osg-carousel-next-button"
+          class="osg-carousel__next-button"
           :is-circle="true"
           :color="navigationArrowColor"
         >
@@ -27,17 +27,17 @@
         </osg-vue-button>
       </div>
 
-      <div class="osg-carousel-shapes">
+      <div class="osg-carousel__shapes">
         <osg-vue-shape
           :class="[
-            'osg-squared-shape',
+            'osg-carousel__squared-shape',
             `osg-u-color-bg-${squareColor}` 
           ]"
         />
 
         <osg-vue-shape
           :class="[
-            'osg-circular-shape',
+            'osg-carousel__circular-shape',
             'osg-v-circle',
             `osg-u-color-bg-${circleColor}`
           ]"
@@ -46,15 +46,15 @@
 
 
     </osg-vue-figure>
-    <div class="osg-carousel-info osg-u-margin-top-2">
-      <span class="osg-carousel-icons">
+    <div class="osg-carousel__info osg-u-margin-top-2">
+      <span class="osg-carousel__icons">
         <osg-vue-shape
           v-for="(image, index) in images"
           v-bind:key="image.imageUrl"
           @click.native="setCurrentImage(index)"
           :class="[
-            'osg-carousel-icon',
-            current === index ? 'osg-carousel-current' : 'osg-v-circle',
+            'osg-carousel__icon',
+            current === index ? 'osg-carousel__current-element' : 'osg-v-circle',
           ]"
         />
       </span>
