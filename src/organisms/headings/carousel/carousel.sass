@@ -1,0 +1,74 @@
+@import "~styleguide/src/assets/sass/resources.sass"
+@import "~styleguide/src/assets/sass/common/_utils.sass"
+
+.osg-carousel
+  .osg-figure
+    position: relative
+
+    figcaption
+      position: absolute
+
+  &__navigation 
+    display: flex
+    justify-content: space-between
+    position: absolute
+    width: 100%
+    top: 50%
+    +osg-mq-mobile-only
+      i
+        font-size: 22px
+
+  &__previous-button
+    transform: rotate(180deg)
+    margin-left: 25px
+
+  &__next-button
+    margin-right: 25px
+
+  &__previous-button,
+  &__next-button
+    +osg-mq-mobile-only
+      height: 40px
+      width: 40px
+      min-height: 40px
+      min-width: 40px
+      padding: 0
+      margin: 0
+
+  &__shapes
+    display: flex
+    align-items: flex-end
+    position: absolute
+    width: 100%
+    bottom: 0
+    +osg-mq-mobile-only
+      display: none
+    
+  &__squared-shape 
+    width: 50%
+    height: 149px
+    width: 149px
+
+  &__circular-shape
+    height: 149px
+    width: 149px
+
+  &__info
+    +osg-mq-mobile-only
+      margin-left: 20px
+
+  &__icons 
+    margin-left: 5px
+    +osg-mq-mobile-only
+      display: none
+
+  &__icon
+    width: 10px
+    height: 10px
+    min-width: 10px
+    margin: 10px 5px
+    background-color: $osg-color-beige
+    cursor: pointer
+
+  &__current-element
+    background-color: $osg-color-blue-dark
