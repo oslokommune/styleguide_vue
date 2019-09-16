@@ -44,8 +44,6 @@
             `osg-u-color-bg-${circleColor}`
           ]"
         />
-
-        <slot></slot>
       </div>
 
     </osg-vue-figure>
