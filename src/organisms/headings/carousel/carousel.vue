@@ -192,7 +192,10 @@
 
       setCurrentImage(number) {
         const currentIndex = this.current
-        if (currentIndex !== number) this.current = number
+        if (currentIndex !== number) {
+          this.current = number
+          this.currentImage = this.imageArray[number]
+        }
       },
     }
   }
