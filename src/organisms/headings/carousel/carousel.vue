@@ -50,7 +50,7 @@
 
     </osg-vue-figure>
     <div class="osg-carousel__info osg-u-margin-top-2">
-      <span class="osg-carousel__icons">
+      <span class="osg-carousel__icons" v-if="hasCarouselIcons">
         <osg-vue-shape
           v-for="(image, index) in images"
           v-bind:key="image.imageUrl"
@@ -103,14 +103,19 @@
         required: true
       },
 
+      hasCarouselIcons: {
+        type: Boolean,
+        default: false,
+      },
+
       hasSquaredShape: {
         type: Boolean,
-        default: 'true'
+        default: true
       },
 
       hasCircularShape: {
         type: Boolean,
-        default: 'true'
+        default: true
       },
 
       circleColor: {
@@ -161,13 +166,13 @@
         const currentIndex = this.current
         const infinite = this.infinite
         const imageArrayElements = this.imageArray.length - 1
-        
+
         if (infinite) {
-          if (currentIndex - 1 < 0) this.current = imageArrayElements
-          else this.current = currentIndex - 1
+          if (currentIndex - 1 < 0) this.setCurrentImage(imageArrayElements)
+          else this.setCurrentImage(currentIndex - 1)
 
         } else if (!infinite) {
-          if (currentIndex - 1 >= 0) this.current = currentIndex - 1
+          if (currentIndex - 1 >= 0) this.setCurrentImage(currentIndex - 1)
         }
       },
 
@@ -177,11 +182,11 @@
         const imageArrayElements = this.imageArray.length - 1
 
         if (infinite) {
-          if (currentIndex === imageArrayElements) this.current = 0
-          else this.current = currentIndex + 1
+          if (currentIndex === imageArrayElements) this.setCurrentImage(0)
+          else this.setCurrentImage(currentIndex + 1)
 
         } else if (!infinite) {
-          if (currentIndex + 1 <= imageArrayElements) this.current = currentIndex + 1
+          if (currentIndex + 1 <= imageArrayElements) this.setCurrentImage(currentIndex + 1)
         }
       },
 
