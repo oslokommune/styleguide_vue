@@ -69,8 +69,8 @@
 <script>
   import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
   import OsgVueShape from '../../../atoms/decorators/shape/shape.vue'
-  import OsgVueButton from '../../../atoms/buttons/button/button'
-  import OsgVueIcon from '../../../atoms/icons/icon/icon'
+  import OsgVueButton from '../../../atoms/buttons/button/button.vue'
+  import OsgVueIcon from '../../../atoms/icons/icon/icon.vue'
 
   export default {
     name: "OsgVueCarousel",
