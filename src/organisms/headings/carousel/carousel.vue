@@ -1,10 +1,10 @@
 <template>
   <div class="osg-carousel">
     <osg-vue-figure
-      :url="currentImage.imageUrl"
-      :url-mobile="currentImage.imageUrlMobile || currentImage.imageUrl"
-      :url-tablet="currentImage.imageUrlTablet || currentImage.imageUrl"
-      :url-desktop="currentImage.imageUrlDesktop || currentImage.imageUrl"
+      :url="currentImage.url"
+      :url-mobile="currentImage.imageUrlMobile || currentImage.url"
+      :url-tablet="currentImage.imageUrlTablet || currentImage.url"
+      :url-desktop="currentImage.imageUrlDesktop || currentImage.url"
       :sr-description="currentImage.imageCaption"
     >
       <div class="osg-carousel__navigation">
@@ -51,7 +51,7 @@
       <span class="osg-carousel__icons" v-if="hasCarouselIcons">
         <osg-vue-shape
           v-for="(image, index) in images"
-          v-bind:key="image.imageUrl"
+          v-bind:key="image.url"
           @click.native="setCurrentImage(index)"
           :class="[
             'osg-carousel__icon',
@@ -60,7 +60,7 @@
         />
       </span>
       <span>
-        {{ currentImage.imageCaption }}
+        {{ currentImage.caption }}
       </span>
     </div>
   </div>
@@ -140,12 +140,14 @@
       current: 0,
       carouselIconsWidth: 0,
       imageArray: [{
-        imageUrl: "",
-        imageCaption: "",
+        url: "",
+        caption: "",
+        alt: "",
       }],
       currentImage: {
-        imageUrl: "",
-        imageCaption: "",
+        url: "",
+        caption: "",
+        alt: "",
       }
     }),
 
