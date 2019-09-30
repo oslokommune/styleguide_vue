@@ -90,8 +90,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/common.sass"
-  @import "~styleguide/src/organisms/messages/alert/alert.sass"
-</style>

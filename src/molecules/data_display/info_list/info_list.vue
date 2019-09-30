@@ -72,11 +72,6 @@
   
 </script>
 
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/assets/sass/common/utils"
-  @import "~styleguide/src/molecules/data_display/info_list/info_list.sass"
-</style>
 
 
 

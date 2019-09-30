@@ -75,9 +75,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/common.sass"
-  @import "~styleguide/src/molecules/navigation/navbar_menu_services/navbar_menu_services.sass"
-</style>
-

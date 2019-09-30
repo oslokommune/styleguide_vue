@@ -36,7 +36,3 @@
   }
 </script>
 
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/atoms/buttons/button/button.sass"
-</style>
