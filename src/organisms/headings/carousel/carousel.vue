@@ -89,7 +89,6 @@
           previousIcon: 'chevron-right',
           nextIcon: 'chevron-right'
         },
-        required: true
       },
       
       imageSrDescription: {
