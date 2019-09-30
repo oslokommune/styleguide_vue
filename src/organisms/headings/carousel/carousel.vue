@@ -5,7 +5,7 @@
       :url-mobile="currentImage.imageUrlMobile || currentImage.url"
       :url-tablet="currentImage.imageUrlTablet || currentImage.url"
       :url-desktop="currentImage.imageUrlDesktop || currentImage.url"
-      :sr-description="currentImage.imageCaption"
+      :sr-description="currentImage.caption"
     >
       <div class="osg-carousel__navigation">
         <osg-vue-button
@@ -140,14 +140,14 @@
       current: 0,
       carouselIconsWidth: 0,
       imageArray: [{
-        url: "",
-        caption: "",
-        alt: "",
+        url: null,
+        caption: null,
+        alt: null,
       }],
       currentImage: {
-        url: "",
-        caption: "",
-        alt: "",
+        url: null,
+        caption: null,
+        alt: null,
       }
     }),
 
