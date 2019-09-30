@@ -156,7 +156,7 @@
       this.currentImage = this.imageArray[this.current]
     },
 
-    updated() {
+    computed() {
       this.currentImage = this.imageArray[this.current]
     },
 
