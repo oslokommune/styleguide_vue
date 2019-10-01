@@ -85,10 +85,11 @@
     props: {
       icons: {
         type: Object,
-        default: {
-          previousIcon: 'chevron-right',
-          nextIcon: 'chevron-right'
-        },
+        default () {
+          return {
+            previousIcon: 'chevron-right',
+            nextIcon: 'chevron-right'
+          }
       },
       
       imageSrDescription: {
