@@ -88,7 +88,7 @@
         type: Object,
         default () {
           return {
-            previousIcon: 'chevron-right',
+            previousIcon: 'chevron-left',
             nextIcon: 'chevron-right'
           }
         }
