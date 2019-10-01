@@ -2,11 +2,16 @@
 @import "~styleguide/src/assets/sass/common/_utils.sass"
 
 .osg-carousel
+  height: 100%
+  
   .osg-figure
     position: relative
 
     figcaption
       position: absolute
+    
+    img
+      object-fit: cover
 
   &__navigation 
     display: flex

@@ -143,32 +143,24 @@
       return {
         current: 0,
         carouselIconsWidth: 0,
-        imageArray: [{
-          url: "",
-          caption: "",
-          alt: "",
-        }],
-        currentImage: {}
       };
     },
 
-    mounted() {
-      this.imageArray = this.images
-      this.currentImage = this.imageArray[this.current]
-    },
-
-    updated() {
-      this.currentImage = this.imageArray[this.current]
+    computed: {
+      currentImage: function() {
+        if (!this.images) return {}
+        return this.images[this.current]
+      }
     },
 
     methods: {
       getPreviousImage() {
         const currentIndex = this.current
         const infinite = this.infinite
-        const imageArrayElements = this.imageArray.length - 1
+        const imagesLength = this.images.length - 1
 
         if (infinite) {
-          if (currentIndex - 1 < 0) this.setCurrentImage(imageArrayElements)
+          if (currentIndex - 1 < 0) this.setCurrentImage(imagesLength)
           else this.setCurrentImage(currentIndex - 1)
 
         } else if (!infinite) {
@@ -179,14 +171,14 @@
       getNextImage() {
         const currentIndex = this.current
         const infinite = this.infinite
-        const imageArrayElements = this.imageArray.length - 1
+        const imagesLength = this.images.length - 1
 
         if (infinite) {
-          if (currentIndex === imageArrayElements) this.setCurrentImage(0)
+          if (currentIndex === imagesLength) this.setCurrentImage(0)
           else this.setCurrentImage(currentIndex + 1)
 
         } else if (!infinite) {
-          if (currentIndex + 1 <= imageArrayElements) this.setCurrentImage(currentIndex + 1)
+          if (currentIndex + 1 <= imagesLength) this.setCurrentImage(currentIndex + 1)
         }
       },
 
@@ -194,7 +186,6 @@
         const currentIndex = this.current
         if (currentIndex !== number) {
           this.current = number
-          this.currentImage = this.imageArray[number]
         }
       },
     }
