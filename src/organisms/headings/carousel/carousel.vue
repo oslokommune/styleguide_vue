@@ -1,6 +1,7 @@
 <template>
   <div class="osg-carousel">
     <osg-vue-figure
+      v-if="currentImage"
       :url="currentImage.url"
       :url-mobile="currentImage.imageUrlMobile || currentImage.url"
       :url-tablet="currentImage.imageUrlTablet || currentImage.url"
@@ -90,6 +91,7 @@
             previousIcon: 'chevron-right',
             nextIcon: 'chevron-right'
           }
+        }
       },
       
       imageSrDescription: {
@@ -137,27 +139,25 @@
       }
     },
 
-    data: () => ({
-      current: 0,
-      carouselIconsWidth: 0,
-      imageArray: [{
-        url: null,
-        caption: null,
-        alt: null,
-      }],
-      currentImage: {
-        url: null,
-        caption: null,
-        alt: null,
-      }
-    }),
+    data() {
+      return {
+        current: 0,
+        carouselIconsWidth: 0,
+        imageArray: [{
+          url: "",
+          caption: "",
+          alt: "",
+        }],
+        currentImage: {}
+      };
+    },
 
     mounted() {
       this.imageArray = this.images
       this.currentImage = this.imageArray[this.current]
     },
 
-    computed() {
+    updated() {
       this.currentImage = this.imageArray[this.current]
     },
 
@@ -204,5 +204,4 @@
 <style lang="sass">
   @import "./carousel.sass"
 </style>
-
 

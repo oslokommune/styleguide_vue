@@ -89,6 +89,6 @@ export default {
     searchResultUrl: {
       type: String
     }
-  }
+  },
 };
 </script>
