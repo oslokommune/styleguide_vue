@@ -44,6 +44,42 @@
 
       </div>
     </div>
+
+    <div class="osg-carousel__shapes">
+      <osg-vue-shape
+        v-if="hasSquaredShape"
+        :class="[
+          'osg-carousel__squared-shape',
+          `osg-u-color-bg-${squareColor}` 
+        ]"
+      />
+
+      <osg-vue-shape
+        v-if="hasCircularShape"
+        :class="[
+          'osg-carousel__circular-shape',
+          'osg-v-circle',
+          `osg-u-color-bg-${circleColor}`
+        ]"
+      />
+  </div>
+
+    <div class="osg-carousel__info osg-u-margin-top-2">
+      <span class="osg-carousel__icons" v-if="hasCarouselIcons">
+        <osg-vue-shape
+          v-for="(image, index) in images"
+          v-bind:key="image.url"
+          @click.native="setCurrentImage(index)"
+          :class="[
+            'osg-carousel__icon',
+            current === index ? 'osg-carousel__current-element' : 'osg-v-circle',
+          ]"
+        />
+      </span>
+      <span>
+        {{ currentImage.caption }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -135,7 +171,6 @@
 
     methods: {
       getPreviousImage() {
-        console.log("previous")
         const currentIndex = this.current
         const infinite = this.infinite
         const imagesLength = this.images.length - 1
@@ -150,7 +185,6 @@
       },
 
       getNextImage() {
-        console.log("next")
         const currentIndex = this.current
         const infinite = this.infinite
         const imagesLength = this.images.length - 1

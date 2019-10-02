@@ -1,8 +1,13 @@
 @import "~styleguide/src/assets/sass/resources.sass"
 @import "~styleguide/src/assets/sass/common/_utils.sass"
 
+$osg-carousel-image-height-mobile: 290
+$osg-carousel-image-height-tablet: 540
+$osg-carousel-image-height-desktop: 725
+
+$osg-shape-size: 149px
+
 .osg-carousel
-  width: 300px
   height: 100%
   overflow: hidden
 
@@ -38,19 +43,28 @@
     justify-content: center
     align-items: center
     scroll-snap-align: start
-    width: 300px
-    height: 300px
+    width: 100%
     position: relative
+    height: #{$osg-carousel-image-height-mobile}px
+    +osg-mq-tablet-and-up
+      height: #{$osg-carousel-image-height-tablet}px
+    +osg-mq-desktop-and-up
+      height: #{$osg-carousel-image-height-desktop}px
 
   &__navigation 
     display: flex
     justify-content: space-between
     position: absolute
     width: 100%
-    top: 50%
+    z-index: 2
     +osg-mq-mobile-only
+      top: #{$osg-carousel-image-height-mobile/2}px
       i
         font-size: 22px
+    +osg-mq-tablet-and-up
+      top: #{$osg-carousel-image-height-tablet/2}px
+    +osg-mq-desktop-and-up
+      top: #{$osg-carousel-image-height-desktop/2}px
 
   &__previous-button
     margin-left: 25px
@@ -71,20 +85,24 @@
   &__shapes
     display: flex
     align-items: flex-end
-    position: absolute
     width: 100%
-    bottom: 0
+    top: 0
+    position: absolute
     +osg-mq-mobile-only
       display: none
+    +osg-mq-tablet-and-up
+      height: #{$osg-carousel-image-height-tablet}px
+    +osg-mq-desktop-and-up
+      height: #{$osg-carousel-image-height-desktop}px
     
   &__squared-shape 
     width: 50%
-    height: 149px
-    width: 149px
+    height: $osg-shape-size
+    width: $osg-shape-size
 
   &__circular-shape
-    height: 149px
-    width: 149px
+    height: $osg-shape-size
+    width: $osg-shape-size
 
   &__info
     +osg-mq-mobile-only
