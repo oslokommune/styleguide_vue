@@ -2,16 +2,45 @@
 @import "~styleguide/src/assets/sass/common/_utils.sass"
 
 .osg-carousel
+  width: 300px
   height: 100%
+  overflow: hidden
 
   .osg-figure
-    position: relative
+    width: 100%
+    height: 100%
 
     figcaption
       position: absolute
     
     img
+      width: 100%
+      height: 100%
       object-fit: cover
+      max-width: none
+      position: absolute
+      top: 0
+      left: 0
+  
+  &__images
+    display: flex
+    overflow-x: auto
+    scroll-snap-type: x mandatory
+    scroll-behavior: smooth
+    -webkit-overflow-scrolling: touch
+
+  &__images::-webkit-scrollbar
+    display: none
+
+  &__images > .osg-figure
+    display: flex
+    flex-shrink: 0
+    justify-content: center
+    align-items: center
+    scroll-snap-align: start
+    width: 300px
+    height: 300px
+    position: relative
 
   &__navigation 
     display: flex
@@ -76,3 +105,6 @@
 
   &__current-element
     background-color: $osg-color-blue-dark
+
+  &__animated img
+    

@@ -1,68 +1,48 @@
 <template>
   <div class="osg-carousel">
-    <osg-vue-figure
-      v-if="currentImage"
-      :url="currentImage.url"
-      :url-mobile="currentImage.imageUrlMobile || currentImage.url"
-      :url-tablet="currentImage.imageUrlTablet || currentImage.url"
-      :url-desktop="currentImage.imageUrlDesktop || currentImage.url"
-      :sr-description="currentImage.caption"
-    >
+    <div class="osg-carousel__images">
+      <osg-vue-figure
+        :id="`image_${index}`"
+        :key="currentImage.url"
+        v-for="(currentImage, index) of this.images"
+        :url="currentImage.url"
+        :url-mobile="currentImage.imageUrlMobile || currentImage.url"
+        :url-tablet="currentImage.imageUrlTablet || currentImage.url"
+        :url-desktop="currentImage.imageUrlDesktop || currentImage.url"
+        :sr-description="currentImage.caption"
+      >
+      </osg-vue-figure>
+
       <div class="osg-carousel__navigation">
-        <osg-vue-button
+        <a
           v-on:click="getPreviousImage"
-          class="osg-carousel__previous-button"
-          :is-circle="true"
-          :color="navigationArrowColor"
+          target="_self"
+          :href="`#image_${this.current}`"
         >
-          <osg-vue-icon :iconName="icons.previousIcon" />
-        </osg-vue-button>
+          <osg-vue-button
+            class="osg-carousel__previous-button"
+            :is-circle="true"
+            :color="navigationArrowColor"
+          >
+            <osg-vue-icon :iconName="icons.previousIcon" />
+          </osg-vue-button>
+        </a>
 
-        <osg-vue-button
+        <a
           v-on:click="getNextImage"
-          class="osg-carousel__next-button"
-          :is-circle="true"
-          :color="navigationArrowColor"
+          target="_self"
+          :href="`#image_${this.current}`"
         >
-          <osg-vue-icon :iconName="icons.nextIcon" />
-        </osg-vue-button>
+          <osg-vue-button
+            class="osg-carousel__next-button"
+            :is-circle="true"
+            :color="navigationArrowColor"
+          >
+            <osg-vue-icon :iconName="icons.nextIcon" />
+          </osg-vue-button>
+        </a>
+
       </div>
-
-      <div class="osg-carousel__shapes">
-        <osg-vue-shape
-          v-if="hasSquaredShape"
-          :class="[
-            'osg-carousel__squared-shape',
-            `osg-u-color-bg-${squareColor}` 
-          ]"
-        />
-
-        <osg-vue-shape
-          v-if="hasCircularShape"
-          :class="[
-            'osg-carousel__circular-shape',
-            'osg-v-circle',
-            `osg-u-color-bg-${circleColor}`
-          ]"
-        />
-      </div>
-
-    </osg-vue-figure>
-    <div class="osg-carousel__info osg-u-margin-top-2">
-      <span class="osg-carousel__icons" v-if="hasCarouselIcons">
-        <osg-vue-shape
-          v-for="(image, index) in images"
-          v-bind:key="image.url"
-          @click.native="setCurrentImage(index)"
-          :class="[
-            'osg-carousel__icon',
-            current === index ? 'osg-carousel__current-element' : 'osg-v-circle',
-          ]"
-        />
-      </span>
-      <span>
-        {{ currentImage.caption }}
-      </span>
     </div>
   </div>
 </template>
@@ -155,6 +135,7 @@
 
     methods: {
       getPreviousImage() {
+        console.log("previous")
         const currentIndex = this.current
         const infinite = this.infinite
         const imagesLength = this.images.length - 1
@@ -169,6 +150,7 @@
       },
 
       getNextImage() {
+        console.log("next")
         const currentIndex = this.current
         const infinite = this.infinite
         const imagesLength = this.images.length - 1
