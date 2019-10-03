@@ -176,6 +176,9 @@
 
       setDefaultScrollBehavior() {
         document.getElementsByClassName("osg-carousel__images")[0].style.scrollBehavior="auto"
+
+        console.log( document.getElementsByClassName("osg-carousel__images")[0])
+       
       },
 
       getPreviousImage() {
@@ -187,12 +190,14 @@
           if (currentIndex - 1 < 0) {
             this.setCurrentImage(imagesLength)
             this.setDefaultScrollBehavior()
+            console.log(document.getElementById(`image_${this.current}`))
+            
+            document.getElementById(`image_${this.current}`).style.transform = "rotate(20deg)"
           }
           else {
             this.setCurrentImage(currentIndex - 1)
             this.setSmoothScrollBehavior()
           }
-
         } else if (!infinite) {
           this.setSmoothScrollBehavior()
           if (currentIndex - 1 >= 0) this.setCurrentImage(currentIndex - 1)
