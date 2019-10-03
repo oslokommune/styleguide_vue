@@ -170,16 +170,31 @@
     },
 
     methods: {
+      setSmoothScrollBehavior() {
+        document.getElementsByClassName("osg-carousel__images")[0].style.scrollBehavior="smooth"
+      },
+
+      setDefaultScrollBehavior() {
+        document.getElementsByClassName("osg-carousel__images")[0].style.scrollBehavior="auto"
+      },
+
       getPreviousImage() {
         const currentIndex = this.current
         const infinite = this.infinite
         const imagesLength = this.images.length - 1
 
         if (infinite) {
-          if (currentIndex - 1 < 0) this.setCurrentImage(imagesLength)
-          else this.setCurrentImage(currentIndex - 1)
+          if (currentIndex - 1 < 0) {
+            this.setCurrentImage(imagesLength)
+            this.setDefaultScrollBehavior()
+          }
+          else {
+            this.setCurrentImage(currentIndex - 1)
+            this.setSmoothScrollBehavior()
+          }
 
         } else if (!infinite) {
+          this.setSmoothScrollBehavior()
           if (currentIndex - 1 >= 0) this.setCurrentImage(currentIndex - 1)
         }
       },
@@ -190,10 +205,17 @@
         const imagesLength = this.images.length - 1
 
         if (infinite) {
-          if (currentIndex === imagesLength) this.setCurrentImage(0)
-          else this.setCurrentImage(currentIndex + 1)
+          if (currentIndex === imagesLength) {
+            this.setDefaultScrollBehavior()
+            this.setCurrentImage(0)
+          }
+          else {
+            this.setCurrentImage(currentIndex + 1)
+            this.setSmoothScrollBehavior()
+          }
 
         } else if (!infinite) {
+          this.setSmoothScrollBehavior()
           if (currentIndex + 1 <= imagesLength) this.setCurrentImage(currentIndex + 1)
         }
       },
