@@ -8,47 +8,39 @@ $osg-carousel-image-height-desktop: 725
 $osg-shape-size: 149px
 
 .osg-carousel
-  height: 100%
-  overflow: hidden
+  position: relative
 
-  .osg-figure
+  img
+    object-fit: cover
     width: 100%
-    height: 100%
-
-    figcaption
-      position: absolute
-    
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-      max-width: none
-      position: absolute
-      top: 0
-      left: 0
-
-  &__images
-    display: flex
-    overflow-x: auto
-    scroll-snap-type: x mandatory
-    -webkit-overflow-scrolling: touch
-
-  &__images::-webkit-scrollbar
-    display: none
-
-  &__images > .osg-figure
-    display: flex
-    flex-shrink: 0
-    justify-content: center
-    align-items: center
-    scroll-snap-align: start
-    width: 100%
-    position: relative
     height: #{$osg-carousel-image-height-mobile}px
     +osg-mq-tablet-and-up
       height: #{$osg-carousel-image-height-tablet}px
     +osg-mq-desktop-and-up
       height: #{$osg-carousel-image-height-desktop}px
+
+  &__content
+    position: relative
+    overflow: hidden
+
+  &__track
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+
+  &__slides
+    align-items: center
+    display: flex
+    flex-direction: row
+    flex-grow: 1
+    flex-shrink: 0
+    flex-wrap: nowrap
+    justify-content: flex-start
+
+  &__slide
+    display: block
+    flex-grow: 1
+    flex-shrink: 0
 
   &__navigation 
     display: flex
