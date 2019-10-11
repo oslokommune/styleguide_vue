@@ -181,11 +181,6 @@
         type: String,
         default: "yellow"
       },
-
-      infinite: {
-        type: Boolean,
-        default: false
-      }
     },
 
     data() {
