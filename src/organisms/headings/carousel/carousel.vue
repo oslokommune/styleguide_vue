@@ -71,17 +71,6 @@
     </div>
 
     <div class="osg-carousel__info osg-u-margin-top-2">
-      <span class="osg-carousel__icons" v-if="hasCarouselIcons">
-        <osg-vue-shape
-          v-for="(image, index) in images"
-          v-bind:key="image.url"
-          @click.native="setCurrentImage(index)"
-          :class="[
-            'osg-carousel__icon',
-            current === index ? 'osg-carousel__current-element' : 'osg-v-circle',
-          ]"
-        />
-      </span>
       <span>
         {{ currentImage.caption }}
       </span>
@@ -113,15 +102,6 @@
       mode: {
         type: String,
         default: "scroll"
-      },
-
-      /**
-       * Time in milliseconds between each slide transition.
-       * Used only if autoplay is set to true
-       */
-      autoplaySpeed: {
-        type: Number,
-        default: 3000
       },
 
       /**
@@ -177,11 +157,6 @@
         required: true
       },
 
-      hasCarouselIcons: {
-        type: Boolean,
-        default: false,
-      },
-
       hasSquaredShape: {
         type: Boolean,
         default: true
@@ -230,8 +205,6 @@
           initialSlide: this.initialSlide,
           speed: this.speed,
           timing: this.timing,
-          autoplay: this.autoplay,
-          autoplaySpeed: this.autoplaySpeed
         }
       };
     },
@@ -250,7 +223,7 @@
 
      mounted() {
       // Windows resize listener
-      window.addEventListener("resize", this.getWidth);
+      window.addEventListener("resize", this.calculateWidthSlide);
 
       // Init carousel
       this.reload();
@@ -258,7 +231,7 @@
 
     beforeDestroy() {
       // Remove resize listener
-      window.removeEventListener("resize", this.getWidth);
+      window.removeEventListener("resize", this.calculateWidthSlide);
     },
 
     computed: {
@@ -271,17 +244,25 @@
     methods: {
       // Reload carousel
       reload() {
-        this.getWidth();
-        //this.prepareSettings();
+        this.calculateWidthSlide();
+        this.prepareSettings();
         this.prepareSlides();
         this.prepareCarousel();
       },
 
       /**
-       * Set window & container width
+       * Set window & container width, remove transition and calculate transition offset
        */
-      getWidth() {
+      calculateWidthSlide() {
         this.widthContainer = this.$refs.content.clientWidth;
+        this.widthSlide = this.widthContainer;
+
+        for (let i = 0; i < this.slides.length; i++) {
+          this.slides[i].style.width = this.widthSlide + "px";
+        }
+
+        this.transitionDelay = 0;
+        this.translateX = this.currentSlide * this.widthSlide * -1;
       },
 
       /**
@@ -295,20 +276,19 @@
        * Prepare settings object
        */
       prepareSettings() {
-        //this.settings = Object.assign({}, this.initialSettings);
+        this.settings = Object.assign({}, this.initialSettings);
       },
 
       /**
        * Prepare slides classes and styles
        */
       prepareSlides() {
-        console.log(this.$refs.slides)
         const slideLenth = this.$refs.slides.children.length;
-        const firstSlideClone = this.$refs.slides.children[0].cloneNode();
+        const firstSlideClone = this.$refs.slides.children[0].cloneNode(true);
         firstSlideClone.id = "carousel-end-clone";
         const lastSlideClone = this.$refs.slides.children[
           slideLenth - 1
-        ].cloneNode();
+        ].cloneNode(true);
         lastSlideClone.id = "carousel-start-clone";
 
         this.$refs.slides.prepend(lastSlideClone);
@@ -377,9 +357,9 @@
             }, this.settings.speed);
           }
         }
-         this.transitionDelay = transition ? this.settings.speed : 0;
-        this.translateX = index * this.widthSlide * -1;
-        this.currentSlide = index;
+          this.transitionDelay = transition ? this.settings.speed : 0;
+          this.translateX = index * this.widthSlide * -1;
+          this.currentSlide = index;
       }
     }
   }
