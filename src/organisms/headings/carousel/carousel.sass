@@ -5,6 +5,15 @@ $osg-carousel-image-height-mobile: 290
 $osg-carousel-image-height-tablet: 540
 $osg-carousel-image-height-desktop: 725
 
+// Variables for navigation
+$osg-carousel-navigation-button-size: 40
+$osg-carousel-navigation-button-size-one-forth: 40/4
+
+// Calculate top values so to center navigation buttons in the middle of picture
+$osg-carousel-navigation-top-mobile: #{$osg-carousel-image-height-mobile/2 - $osg-carousel-navigation-button-size-one-forth}px
+$osg-carousel-navigation-top-tablet: #{$osg-carousel-image-height-tablet/2 - $osg-carousel-navigation-button-size-one-forth}px
+$osg-carousel-navigation-top-desktop: #{$osg-carousel-image-height-desktop/2 - $osg-carousel-navigation-button-size-one-forth}px
+
 $osg-shape-size: 149px
 
 .osg-carousel
@@ -49,13 +58,13 @@ $osg-shape-size: 149px
     width: 100%
     z-index: 2
     +osg-mq-mobile-only
-      top: #{$osg-carousel-image-height-mobile/2}px
+      top: $osg-carousel-navigation-top-mobile
       i
         font-size: 22px
     +osg-mq-tablet-and-up
-      top: #{$osg-carousel-image-height-tablet/2}px
+      top: $osg-carousel-navigation-top-tablet
     +osg-mq-desktop-and-up
-      top: #{$osg-carousel-image-height-desktop/2}px
+      top: $osg-carousel-navigation-top-desktop
 
   &__previous-button
     margin-left: 25px
@@ -66,10 +75,10 @@ $osg-shape-size: 149px
   &__previous-button,
   &__next-button
     +osg-mq-mobile-only
-      height: 40px
-      width: 40px
-      min-height: 40px
-      min-width: 40px
+      height: #{$osg-carousel-navigation-button-size}px
+      width: #{$osg-carousel-navigation-button-size}px
+      min-height: #{$osg-carousel-navigation-button-size}px
+      min-width: #{$osg-carousel-navigation-button-size}px
       padding: 0
       margin: 0
 
