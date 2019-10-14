@@ -53,18 +53,16 @@ $osg-shape-size: 149px
 
   &__navigation 
     display: flex
+    align-items: center
     justify-content: space-between
     position: absolute
     width: 100%
+    height: 100%
     z-index: 2
+    top: 0
     +osg-mq-mobile-only
-      top: $osg-carousel-navigation-top-mobile
       i
         font-size: 22px
-    +osg-mq-tablet-and-up
-      top: $osg-carousel-navigation-top-tablet
-    +osg-mq-desktop-and-up
-      top: $osg-carousel-navigation-top-desktop
 
     a
       text-decoration: none
