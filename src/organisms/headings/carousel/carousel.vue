@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="osg-carousel__navigation">
+      <div class="osg-carousel__navigation" v-if="this.images.length > 1">
         <a
           @click="goToPrev"
           target="_self"
