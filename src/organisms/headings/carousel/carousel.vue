@@ -58,7 +58,7 @@
         v-if="hasCircularShape"
         :class="[
           'osg-carousel__circular-shape',
-          'osg-v-circle',
+          'osg-shape--circle',
           `osg-u-color-bg-${circleColor}`
         ]"
       />
