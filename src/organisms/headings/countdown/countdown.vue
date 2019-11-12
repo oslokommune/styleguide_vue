@@ -79,12 +79,6 @@
   }
 </script>
 
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/assets/sass/common/_utils.sass"
-  @import "~styleguide/src/organisms/headings/countdown/countdown.sass"
-</style>
-
 <style lang="sass" scoped>
 // stylefix for the extra element that vue-countdown adds
 .osg-countdown > div

@@ -11,9 +11,3 @@ export default {
   name: 'OsgContentBox'
 }
 </script>
-
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources"
-  @import "~styleguide/src/molecules/content_display/content_box/content_box"
-</style>

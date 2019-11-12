@@ -54,8 +54,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/organisms/navigation/call_to_action/call_to_action.sass"
-</style>

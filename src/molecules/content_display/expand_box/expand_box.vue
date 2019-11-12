@@ -88,9 +88,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/common.sass"
-  @import "~styleguide/src/molecules/content_display/content_box/content_box.sass"
-  @import "~styleguide/src/molecules/content_display/expand_box/expand_box.sass"
-</style>

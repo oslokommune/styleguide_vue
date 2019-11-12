@@ -1,25 +1,73 @@
 @import "~styleguide/src/assets/sass/resources.sass"
 @import "~styleguide/src/assets/sass/common/_utils.sass"
 
-.osg-carousel
-  .osg-figure
-    position: relative
+$osg-carousel-image-height-mobile: 290
+$osg-carousel-image-height-tablet: 540
+$osg-carousel-image-height-desktop: 725
 
-    figcaption
-      position: absolute
+// Variables for navigation
+$osg-carousel-navigation-button-size: 40
+$osg-carousel-navigation-button-size-one-forth: 40/4
+
+// Calculate top values so to center navigation buttons in the middle of picture
+$osg-carousel-navigation-top-mobile: #{$osg-carousel-image-height-mobile/2 - $osg-carousel-navigation-button-size-one-forth}px
+$osg-carousel-navigation-top-tablet: #{$osg-carousel-image-height-tablet/2 - $osg-carousel-navigation-button-size-one-forth}px
+$osg-carousel-navigation-top-desktop: #{$osg-carousel-image-height-desktop/2 - $osg-carousel-navigation-button-size-one-forth}px
+
+$osg-shape-size: 149px
+
+.osg-carousel
+  position: relative
+
+  img
+    object-fit: cover
+    width: 100%
+    height: #{$osg-carousel-image-height-mobile}px
+    +osg-mq-tablet-and-up
+      height: #{$osg-carousel-image-height-tablet}px
+    +osg-mq-desktop-and-up
+      height: #{$osg-carousel-image-height-desktop}px
+
+  &__content
+    position: relative
+    overflow: hidden
+
+  &__track
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+
+  &__slides
+    align-items: center
+    display: flex
+    flex-direction: row
+    flex-grow: 1
+    flex-shrink: 0
+    flex-wrap: nowrap
+    justify-content: flex-start
+
+  &__slide
+    display: block
+    flex-grow: 1
+    flex-shrink: 0
 
   &__navigation 
     display: flex
+    align-items: center
     justify-content: space-between
     position: absolute
     width: 100%
-    top: 50%
+    height: 100%
+    z-index: 2
+    top: 0
     +osg-mq-mobile-only
       i
         font-size: 22px
 
+    a
+      text-decoration: none
+
   &__previous-button
-    transform: rotate(180deg)
     margin-left: 25px
 
   &__next-button
@@ -28,47 +76,35 @@
   &__previous-button,
   &__next-button
     +osg-mq-mobile-only
-      height: 40px
-      width: 40px
-      min-height: 40px
-      min-width: 40px
+      height: #{$osg-carousel-navigation-button-size}px
+      width: #{$osg-carousel-navigation-button-size}px
+      min-height: #{$osg-carousel-navigation-button-size}px
+      min-width: #{$osg-carousel-navigation-button-size}px
       padding: 0
       margin: 0
 
   &__shapes
     display: flex
     align-items: flex-end
-    position: absolute
     width: 100%
-    bottom: 0
+    top: 0
+    position: absolute
     +osg-mq-mobile-only
       display: none
+    +osg-mq-tablet-and-up
+      height: #{$osg-carousel-image-height-tablet}px
+    +osg-mq-desktop-and-up
+      height: #{$osg-carousel-image-height-desktop}px
     
   &__squared-shape 
     width: 50%
-    height: 149px
-    width: 149px
+    height: $osg-shape-size
+    width: $osg-shape-size
 
   &__circular-shape
-    height: 149px
-    width: 149px
+    height: $osg-shape-size
+    width: $osg-shape-size
 
   &__info
     +osg-mq-mobile-only
-      margin-left: 20px
-
-  &__icons 
-    margin-left: 5px
-    +osg-mq-mobile-only
-      display: none
-
-  &__icon
-    width: 10px
-    height: 10px
-    min-width: 10px
-    margin: 10px 5px
-    background-color: $osg-color-beige
-    cursor: pointer
-
-  &__current-element
-    background-color: $osg-color-blue-dark
+      margin-left: 15px

@@ -5,7 +5,7 @@
     :title="urlTitle"
     :target="target"
     class="osg-shape"
-    :class="[{ 'osg-v-circle': isCircle }, {'osg-v-image': imageUrl }]"
+    :class="[{ 'osg-shape--circle': isCircle }, {'osg-v-image': imageUrl }]"
   >
     <osg-vue-figure
       v-if="imageUrl"
@@ -77,7 +77,3 @@
   }
 </script>
 
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources.sass"
-  @import "~styleguide/src/atoms/decorators/shape/shape.sass"
-</style>

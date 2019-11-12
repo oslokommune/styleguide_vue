@@ -1,30 +1,53 @@
 <template>
   <div class="osg-carousel">
-    <osg-vue-figure
-      :url="currentImage.imageUrl"
-      :url-mobile="currentImage.imageUrlMobile || currentImage.imageUrl"
-      :url-tablet="currentImage.imageUrlTablet || currentImage.imageUrl"
-      :url-desktop="currentImage.imageUrlDesktop || currentImage.imageUrl"
-      :sr-description="currentImage.imageCaption"
-    >
-      <div class="osg-carousel__navigation">
-        <osg-vue-button
-          v-on:click="getPreviousImage"
-          class="osg-carousel__previous-button"
-          :is-circle="true"
-          :color="navigationArrowColor"
-        >
-          <osg-vue-icon :iconName="icons.previousIcon" />
-        </osg-vue-button>
+    <div class="osg-carousel__content" ref="content">
+      <div
+        ref="track"
+        class="osg-carousel__track"
+        :style="{transform: `translate(${translateX}px)`, transition: `transform ${settings.timing} ${transitionDelay}ms`}"
+      >
+        <div class="osg-carousel__slides" ref="slides">
+          <osg-vue-figure
+            :id="`image_${index}`"
+            :key="image.url"
+            v-for="(image, index) of this.images"
+            :url="image.url"
+            :url-mobile="image.imageUrlMobile ||image.url"
+            :url-tablet="image.imageUrlTablet ||image.url"
+            :url-desktop="image.imageUrlDesktop ||image.url"
+            :sr-description="image.caption"
+          />
+        </div>
+      </div>
 
-        <osg-vue-button
-          v-on:click="getNextImage"
-          class="osg-carousel__next-button"
-          :is-circle="true"
-          :color="navigationArrowColor"
+      <div class="osg-carousel__navigation" v-if="this.images.length > 1">
+        <a
+          @click.prevent="goToPrev"
+          target="_self"
+          href="#"
         >
-          <osg-vue-icon :iconName="icons.nextIcon" />
-        </osg-vue-button>
+          <osg-vue-button
+            class="osg-carousel__previous-button"
+            :is-circle="true"
+            :color="navigationArrowColor"
+          >
+            <osg-vue-icon :iconName="icons.previousIcon" />
+          </osg-vue-button>
+        </a>
+
+        <a
+          @click.prevent="goToNext"
+          target="_self"
+          href="#"
+        >
+          <osg-vue-button
+            class="osg-carousel__next-button"
+            :is-circle="true"
+            :color="navigationArrowColor"
+          >
+            <osg-vue-icon :iconName="icons.nextIcon" />
+          </osg-vue-button>
+        </a>
       </div>
 
       <div class="osg-carousel__shapes">
@@ -38,29 +61,18 @@
 
         <osg-vue-shape
           v-if="hasCircularShape"
+          :isCircle="true"
           :class="[
             'osg-carousel__circular-shape',
-            'osg-v-circle',
             `osg-u-color-bg-${circleColor}`
           ]"
         />
       </div>
+    </div>
 
-    </osg-vue-figure>
     <div class="osg-carousel__info osg-u-margin-top-2">
-      <span class="osg-carousel__icons" v-if="hasCarouselIcons">
-        <osg-vue-shape
-          v-for="(image, index) in images"
-          v-bind:key="image.imageUrl"
-          @click.native="setCurrentImage(index)"
-          :class="[
-            'osg-carousel__icon',
-            current === index ? 'osg-carousel__current-element' : 'osg-v-circle',
-          ]"
-        />
-      </span>
-      <span>
-        {{ currentImage.imageCaption }}
+      <span v-if="currentImage">
+        {{ currentImage.caption }}
       </span>
     </div>
   </div>
@@ -69,8 +81,8 @@
 <script>
   import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
   import OsgVueShape from '../../../atoms/decorators/shape/shape.vue'
-  import OsgVueButton from '../../../atoms/buttons/button/button'
-  import OsgVueIcon from '../../../atoms/icons/icon/icon'
+  import OsgVueButton from '../../../atoms/buttons/button/button.vue'
+  import OsgVueIcon from '../../../atoms/icons/icon/icon.vue'
 
   export default {
     name: "OsgVueCarousel",
@@ -83,27 +95,53 @@
     },
 
     props: {
+      /**
+       * Slide number to start on.
+       */
+      initialSlide: {
+        type: Number,
+        default: 1
+      },
+
+      /**
+       * Slide animation speed in milliseconds
+       */
+      speed: {
+        type: Number,
+        default: 300
+      },
+
+      /**
+       * Transition timing function
+       * Available: ease, linear, ease-in, ease-out, ease-in-out
+       */
+      timing: {
+        type: String,
+        default: "ease-in-out"
+      },
+
+      /**
+       * Settings object.
+       * Used as an alternative to setting individual props.
+       */
+      options: {
+        type: Object,
+        default: () => null
+      },
+    
       icons: {
         type: Object,
-        default: {
-          previousIcon: 'chevron-right',
-          nextIcon: 'chevron-right'
-        },
-        required: true
-      },
-      
-      imageSrDescription: {
-        type: String
+        default () {
+          return {
+            previousIcon: 'chevron-left',
+            nextIcon: 'chevron-right'
+          }
+        }
       },
       
       images: {
         type: Array,
         required: true
-      },
-
-      hasCarouselIcons: {
-        type: Boolean,
-        default: false,
       },
 
       hasSquaredShape: {
@@ -130,71 +168,192 @@
         type: String,
         default: "yellow"
       },
+    },
 
-      infinite: {
-        type: Boolean,
-        default: false
+    data() {
+      return {
+        slides: [],
+        currentSlide: null,
+        transitionDelay: 0,
+        translateX: 0,
+        widthContainer: 0,
+        widthSlide: 0,
+        isSlideChanging: false,
+        settings: {},
+        initialSettings: {
+          initialSlide: this.initialSlide,
+          speed: this.speed,
+          timing: this.timing,
+        }
       }
     },
 
-    data: () => ({
-      current: 0,
-      carouselIconsWidth: 0,
-      imageArray: [{
-        imageUrl: "",
-        imageCaption: "",
-      }],
-      currentImage: {
-        imageUrl: "",
-        imageCaption: "",
+    created() {
+      // Read settings from options object
+      if (this.options) {
+        for (let key in this.options) {
+          this.initialSettings[key] = this.options[key]
+        }
       }
-    }),
 
-    mounted() {
-      this.imageArray = this.images
-      this.currentImage = this.imageArray[this.current]
+      // Load settings
+      Object.assign(this.settings, this.initialSettings)
     },
 
-    updated() {
-      this.currentImage = this.imageArray[this.current]
+     mounted() {
+      // Windows resize listener
+      window.addEventListener("resize", this.calculateWidthSlide)
+
+      // Init carousel
+      this.reload()
+    },
+
+    beforeDestroy() {
+      // Remove resize listener
+      window.removeEventListener("resize", this.calculateWidthSlide)
+    },
+
+    computed: {
+      currentImage: function() {
+        if (!this.images) {
+          return
+        }
+
+        return this.images[this.currentSlide - 1]
+      }
     },
 
     methods: {
-      getPreviousImage() {
-        const currentIndex = this.current
-        const infinite = this.infinite
-        const imageArrayElements = this.imageArray.length - 1
+      // Reload carousel
+      reload() {
+        this.calculateWidthSlide()
+        this.prepareSettings()
+        this.prepareSlides()
+        this.prepareCarousel()
+      },
 
-        if (infinite) {
-          if (currentIndex - 1 < 0) this.setCurrentImage(imageArrayElements)
-          else this.setCurrentImage(currentIndex - 1)
+      /**
+       * Set window & container width, remove transition and calculate transition offset
+       */
+      calculateWidthSlide() {
+        this.widthContainer = this.$refs.content.clientWidth
+        this.widthSlide = this.widthContainer
 
-        } else if (!infinite) {
-          if (currentIndex - 1 >= 0) this.setCurrentImage(currentIndex - 1)
+        for (let i = 0; i < this.slides.length; i++) {
+          this.slides[i].style.width = this.widthSlide + "px"
+        }
+
+        this.transitionDelay = 0
+        this.translateX = this.currentSlide * this.widthSlide * -1
+      },
+
+      /**
+       * Convert HTML Collection to JS Array
+       */
+      htmlCollectionToArray(collection) {
+        return Array.prototype.slice.call(collection, 0)
+      },
+
+      /**
+       * Prepare settings object
+       */
+      prepareSettings() {
+        this.settings = Object.assign({}, this.initialSettings)
+      },
+
+      /**
+       * Prepare slides classes and styles
+       */
+      prepareSlides() {
+        const slideLenth = this.$refs.slides.children.length
+        const firstSlideClone = this.$refs.slides.children[0].cloneNode(true)
+        firstSlideClone.id = "carousel-end-clone"
+        const lastSlideClone = this.$refs.slides.children[
+          slideLenth - 1
+        ].cloneNode(true)
+        lastSlideClone.id = "carousel-start-clone"
+
+        this.$refs.slides.prepend(lastSlideClone)
+        this.$refs.slides.appendChild(firstSlideClone)
+
+        this.slides = this.htmlCollectionToArray(this.$refs.slides.children)
+
+        for (let slide of this.slides) {
+          slide.classList.add("osg-carousel__slide")
+        }
+      },
+      
+      /**
+       * Prepare carousel styles
+       */
+      prepareCarousel() {
+        this.widthSlide = this.widthContainer
+
+        for (let i = 0; i < this.slides.length; i++) {
+          this.slides[i].style.width = this.widthSlide + "px"
+        }
+
+        if (this.currentSlide === null) {
+          this.currentSlide = this.settings.initialSlide
+        }
+
+        this.goTo(this.currentSlide, false)
+      },
+
+      getNextSlide(index) {
+        switch (this.slides[index].id) {
+          case "carousel-start-clone":
+            return this.slides.length - 2
+          case "carousel-end-clone":
+            return 1
+          default:
+            return index
         }
       },
 
-      getNextImage() {
-        const currentIndex = this.current
-        const infinite = this.infinite
-        const imageArrayElements = this.imageArray.length - 1
-
-        if (infinite) {
-          if (currentIndex === imageArrayElements) this.setCurrentImage(0)
-          else this.setCurrentImage(currentIndex + 1)
-
-        } else if (!infinite) {
-          if (currentIndex + 1 <= imageArrayElements) this.setCurrentImage(currentIndex + 1)
-        }
+      // Go to next slide
+      goToNext() {
+        this.goTo(this.currentSlide + 1)
+      },
+      // Go to previous slide
+      goToPrev() {
+        this.goTo(this.currentSlide - 1)
       },
 
-      setCurrentImage(number) {
-        const currentIndex = this.current
-        if (currentIndex !== number) {
-          this.current = number
-          this.currentImage = this.imageArray[number]
+      // Go to slide
+      goTo(index, transition = true) {
+        if (index < 0 || index > this.slides.length - 1 || this.isSlideChanging)
+          return
+
+        if (transition) {
+          this.isSlideChanging = true
+          const nextSlide = this.getNextSlide(index)
+
+          setTimeout(() => {
+            this.isSlideChanging = false
+          }, this.settings.speed)
+
+          if (index !== nextSlide) {
+            setTimeout(() => {
+              this.goTo(nextSlide, false)
+            }, this.settings.speed)
+          }
         }
+          this.transitionDelay = transition ? this.settings.speed : 0
+          this.translateX = index * this.widthSlide * -1
+
+          this.updateCurrentSlideIndex(index)
       },
+
+      updateCurrentSlideIndex(index) {
+          if (index === 0) {
+            this.currentSlide = this.images.length
+          } else if (index > (this.images.length)) {
+            this.currentSlide = 1
+          } else {
+            this.currentSlide = index
+          }
+      }
     }
   }
 </script>
@@ -202,5 +361,4 @@
 <style lang="sass">
   @import "./carousel.sass"
 </style>
-
 

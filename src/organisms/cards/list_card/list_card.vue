@@ -89,12 +89,6 @@ export default {
     searchResultUrl: {
       type: String
     }
-  }
+  },
 };
 </script>
-
-<style lang="sass">
-  @import "~styleguide/src/assets/sass/resources"
-  @import "~styleguide/src/assets/sass/common/utils"
-  @import "~styleguide/src/organisms/cards/list_card/list_card"
-</style>
