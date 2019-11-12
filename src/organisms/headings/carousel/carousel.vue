@@ -24,7 +24,7 @@
         <a
           @click="goToPrev"
           target="_self"
-          :href="`#image_${this.current}`"
+          href="#"
         >
           <osg-vue-button
             class="osg-carousel__previous-button"
@@ -38,7 +38,7 @@
         <a
           @click="goToNext"
           target="_self"
-          :href="`#image_${this.current}`"
+          href="#"
         >
           <osg-vue-button
             class="osg-carousel__next-button"
@@ -71,7 +71,7 @@
     </div>
 
     <div class="osg-carousel__info osg-u-margin-top-2">
-      <span>
+      <span v-if="currentImage">
         {{ currentImage.caption }}
       </span>
     </div>
@@ -95,15 +95,6 @@
     },
 
     props: {
-      /**
-       * Set transition mode for carousel.
-       * Available: scroll, fade
-       */
-      mode: {
-        type: String,
-        default: "scroll"
-      },
-
       /**
        * Slide number to start on.
        */
@@ -181,8 +172,6 @@
 
     data() {
       return {
-        current: 0,
-        carouselIconsWidth: 0,
         slides: [],
         currentSlide: null,
         transitionDelay: 0,
@@ -192,7 +181,6 @@
         isSlideChanging: false,
         settings: {},
         initialSettings: {
-          mode: this.mode,
           initialSlide: this.initialSlide,
           speed: this.speed,
           timing: this.timing,
@@ -214,7 +202,7 @@
 
      mounted() {
       // Windows resize listener
-      window.addEventListener("resize", this.calculateWidthSlide);
+      window.addEventListener("resize", this.calculateWidthSlide)
 
       // Init carousel
       this.reload();
@@ -222,13 +210,16 @@
 
     beforeDestroy() {
       // Remove resize listener
-      window.removeEventListener("resize", this.calculateWidthSlide);
+      window.removeEventListener("resize", this.calculateWidthSlide)
     },
 
     computed: {
       currentImage: function() {
-        if (!this.images) return {}
-        return this.images[this.current]
+        if (!this.images) {
+          return
+        }
+
+        return this.images[this.currentSlide - 1]
       }
     },
 
@@ -332,25 +323,36 @@
       // Go to slide
       goTo(index, transition = true) {
         if (index < 0 || index > this.slides.length - 1 || this.isSlideChanging)
-          return;
+          return
 
         if (transition) {
           this.isSlideChanging = true;
-          const nextSlide = this.getNextSlide(index);
+          const nextSlide = this.getNextSlide(index)
 
           setTimeout(() => {
-            this.isSlideChanging = false;
-          }, this.settings.speed);
+            this.isSlideChanging = false
+          }, this.settings.speed)
 
           if (index !== nextSlide) {
             setTimeout(() => {
-              this.goTo(nextSlide, false);
-            }, this.settings.speed);
+              this.goTo(nextSlide, false)
+            }, this.settings.speed)
           }
         }
-          this.transitionDelay = transition ? this.settings.speed : 0;
-          this.translateX = index * this.widthSlide * -1;
-          this.currentSlide = index;
+          this.transitionDelay = transition ? this.settings.speed : 0
+          this.translateX = index * this.widthSlide * -1
+
+          this.updateCurrentSlideIndex(index)
+      },
+
+      updateCurrentSlideIndex(index) {
+          if (index === 0) {
+            this.currentSlide = this.images.length
+          } else if (index > (this.images.length)) {
+            this.currentSlide = 1
+          } else {
+            this.currentSlide = index
+          }
       }
     }
   }
