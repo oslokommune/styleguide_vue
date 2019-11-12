@@ -24,7 +24,7 @@
         <a
           @click="goToPrev"
           target="_self"
-          :href="`#image_${this.current}`"
+          :href="`#image_${this.currentSlide}`"
         >
           <osg-vue-button
             class="osg-carousel__previous-button"
@@ -38,7 +38,7 @@
         <a
           @click="goToNext"
           target="_self"
-          :href="`#image_${this.current}`"
+          :href="`#image_${this.currentSlide}`"
         >
           <osg-vue-button
             class="osg-carousel__next-button"
