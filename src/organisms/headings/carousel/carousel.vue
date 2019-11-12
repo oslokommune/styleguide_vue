@@ -24,7 +24,7 @@
         <a
           @click="goToPrev"
           target="_self"
-          :href="`#image_${this.currentSlide}`"
+          :href="`#image_${this.current}`"
         >
           <osg-vue-button
             class="osg-carousel__previous-button"
@@ -38,7 +38,7 @@
         <a
           @click="goToNext"
           target="_self"
-          :href="`#image_${this.currentSlide}`"
+          :href="`#image_${this.current}`"
         >
           <osg-vue-button
             class="osg-carousel__next-button"
@@ -181,9 +181,10 @@
 
     data() {
       return {
+        current: 0,
         carouselIconsWidth: 0,
         slides: [],
-        currentSlide: 0,
+        currentSlide: null,
         transitionDelay: 0,
         translateX: 0,
         widthContainer: 0,
@@ -227,7 +228,7 @@
     computed: {
       currentImage: function() {
         if (!this.images) return {}
-        return this.images[this.currentSlide]
+        return this.images[this.current]
       }
     },
 
