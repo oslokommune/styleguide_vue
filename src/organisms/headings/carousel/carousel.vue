@@ -185,7 +185,7 @@
           speed: this.speed,
           timing: this.timing,
         }
-      };
+      }
     },
 
     created() {
@@ -205,7 +205,7 @@
       window.addEventListener("resize", this.calculateWidthSlide)
 
       // Init carousel
-      this.reload();
+      this.reload()
     },
 
     beforeDestroy() {
@@ -226,60 +226,60 @@
     methods: {
       // Reload carousel
       reload() {
-        this.calculateWidthSlide();
-        this.prepareSettings();
-        this.prepareSlides();
-        this.prepareCarousel();
+        this.calculateWidthSlide()
+        this.prepareSettings()
+        this.prepareSlides()
+        this.prepareCarousel()
       },
 
       /**
        * Set window & container width, remove transition and calculate transition offset
        */
       calculateWidthSlide() {
-        this.widthContainer = this.$refs.content.clientWidth;
-        this.widthSlide = this.widthContainer;
+        this.widthContainer = this.$refs.content.clientWidth
+        this.widthSlide = this.widthContainer
 
         for (let i = 0; i < this.slides.length; i++) {
-          this.slides[i].style.width = this.widthSlide + "px";
+          this.slides[i].style.width = this.widthSlide + "px"
         }
 
-        this.transitionDelay = 0;
-        this.translateX = this.currentSlide * this.widthSlide * -1;
+        this.transitionDelay = 0
+        this.translateX = this.currentSlide * this.widthSlide * -1
       },
 
       /**
        * Convert HTML Collection to JS Array
        */
       htmlCollectionToArray(collection) {
-        return Array.prototype.slice.call(collection, 0);
+        return Array.prototype.slice.call(collection, 0)
       },
 
       /**
        * Prepare settings object
        */
       prepareSettings() {
-        this.settings = Object.assign({}, this.initialSettings);
+        this.settings = Object.assign({}, this.initialSettings)
       },
 
       /**
        * Prepare slides classes and styles
        */
       prepareSlides() {
-        const slideLenth = this.$refs.slides.children.length;
-        const firstSlideClone = this.$refs.slides.children[0].cloneNode(true);
-        firstSlideClone.id = "carousel-end-clone";
+        const slideLenth = this.$refs.slides.children.length
+        const firstSlideClone = this.$refs.slides.children[0].cloneNode(true)
+        firstSlideClone.id = "carousel-end-clone"
         const lastSlideClone = this.$refs.slides.children[
           slideLenth - 1
-        ].cloneNode(true);
-        lastSlideClone.id = "carousel-start-clone";
+        ].cloneNode(true)
+        lastSlideClone.id = "carousel-start-clone"
 
-        this.$refs.slides.prepend(lastSlideClone);
-        this.$refs.slides.appendChild(firstSlideClone);
+        this.$refs.slides.prepend(lastSlideClone)
+        this.$refs.slides.appendChild(firstSlideClone)
 
-        this.slides = this.htmlCollectionToArray(this.$refs.slides.children);
+        this.slides = this.htmlCollectionToArray(this.$refs.slides.children)
 
         for (let slide of this.slides) {
-          slide.classList.add("osg-carousel__slide");
+          slide.classList.add("osg-carousel__slide")
         }
       },
       
@@ -287,37 +287,37 @@
        * Prepare carousel styles
        */
       prepareCarousel() {
-        this.widthSlide = this.widthContainer;
+        this.widthSlide = this.widthContainer
 
         for (let i = 0; i < this.slides.length; i++) {
-          this.slides[i].style.width = this.widthSlide + "px";
+          this.slides[i].style.width = this.widthSlide + "px"
         }
 
         if (this.currentSlide === null) {
-          this.currentSlide = this.settings.initialSlide;
+          this.currentSlide = this.settings.initialSlide
         }
 
-        this.goTo(this.currentSlide, false);
+        this.goTo(this.currentSlide, false)
       },
 
       getNextSlide(index) {
         switch (this.slides[index].id) {
           case "carousel-start-clone":
-            return this.slides.length - 2;
+            return this.slides.length - 2
           case "carousel-end-clone":
-            return 1;
+            return 1
           default:
-            return index;
+            return index
         }
       },
 
       // Go to next slide
       goToNext() {
-        this.goTo(this.currentSlide + 1);
+        this.goTo(this.currentSlide + 1)
       },
       // Go to previous slide
       goToPrev() {
-        this.goTo(this.currentSlide - 1);
+        this.goTo(this.currentSlide - 1)
       },
 
       // Go to slide
@@ -326,7 +326,7 @@
           return
 
         if (transition) {
-          this.isSlideChanging = true;
+          this.isSlideChanging = true
           const nextSlide = this.getNextSlide(index)
 
           setTimeout(() => {
