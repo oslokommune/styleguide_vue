@@ -148,10 +148,6 @@
         }
       },
       
-      imageSrDescription: {
-        type: String
-      },
-      
       images: {
         type: Array,
         required: true
@@ -185,7 +181,6 @@
 
     data() {
       return {
-        current: 0,
         carouselIconsWidth: 0,
         slides: [],
         currentSlide: null,
@@ -232,7 +227,7 @@
     computed: {
       currentImage: function() {
         if (!this.images) return {}
-        return this.images[this.current]
+        return this.images[this.currentSlide]
       }
     },
 
