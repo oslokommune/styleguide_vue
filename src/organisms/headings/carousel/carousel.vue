@@ -22,7 +22,7 @@
 
       <div class="osg-carousel__navigation" v-if="this.images.length > 1">
         <a
-          @click="goToPrev"
+          @click.prevent="goToPrev"
           target="_self"
           href="#"
         >
@@ -36,7 +36,7 @@
         </a>
 
         <a
-          @click="goToNext"
+          @click.prevent="goToNext"
           target="_self"
           href="#"
         >
