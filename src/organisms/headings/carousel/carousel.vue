@@ -9,13 +9,13 @@
         <div class="osg-carousel__slides" ref="slides">
           <osg-vue-figure
             :id="`image_${index}`"
-            :key="currentImage.url"
-            v-for="(currentImage, index) of this.images"
-            :url="currentImage.url"
-            :url-mobile="currentImage.imageUrlMobile || currentImage.url"
-            :url-tablet="currentImage.imageUrlTablet || currentImage.url"
-            :url-desktop="currentImage.imageUrlDesktop || currentImage.url"
-            :sr-description="currentImage.caption"
+            :key="image.url"
+            v-for="(image, index) of this.images"
+            :url="image.url"
+            :url-mobile="image.imageUrlMobile ||image.url"
+            :url-tablet="image.imageUrlTablet ||image.url"
+            :url-desktop="image.imageUrlDesktop ||image.url"
+            :sr-description="image.caption"
           />
         </div>
       </div>
