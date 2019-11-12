@@ -183,7 +183,7 @@
       return {
         carouselIconsWidth: 0,
         slides: [],
-        currentSlide: null,
+        currentSlide: 0,
         transitionDelay: 0,
         translateX: 0,
         widthContainer: 0,
