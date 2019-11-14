@@ -273,7 +273,7 @@
         ].cloneNode(true)
         lastSlideClone.id = "carousel-start-clone"
 
-        this.$refs.slides.prepend(lastSlideClone)
+        this.$refs.slides.insertBefore(lastSlideClone, this.$refs.slides.children[0])
         this.$refs.slides.appendChild(firstSlideClone)
 
         this.slides = this.htmlCollectionToArray(this.$refs.slides.children)

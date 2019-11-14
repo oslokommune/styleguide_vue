@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- organisms-headings-carousel: changed from .prepend() to insertBefore() for browser compatibility
+
 ### Added
 
 ### Removed
