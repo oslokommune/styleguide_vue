@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- molecules-search-search_field: added search field form component.
+
 ### Removed
 
 ### Changed
