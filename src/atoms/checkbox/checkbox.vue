@@ -3,11 +3,11 @@
     <input type="checkbox"
       :disabled="disabled"
       :checked="checked"
-      v-bind="dataAttrs"
+      :id="id"
     >
     <span class="osg-checkbox__checkmark"></span
     ><span class="osg-u-padding-left-3 osg-checkbox__text">
-      <slot />
+      {{label}}
     </span>
   </label>
 </template>
@@ -25,9 +25,13 @@
         type: Boolean,
         default: false
       },
-      dataAttrs: {
-        type: Object,
-        default: () => ({})
+      label: {
+        type: String,
+        default: 'Checkbox text'
+      },
+      id: {
+        type: String,
+        default: 'Checkbox-id'
       }
     }
   }
