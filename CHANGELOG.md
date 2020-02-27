@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- atoms-dropdown: added single-select dropdown component.
+
 ### Removed
 
 ### Changed
