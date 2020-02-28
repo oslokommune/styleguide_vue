@@ -3,7 +3,6 @@
     <input type="checkbox"
       :disabled="disabled"
       :checked="checked"
-      :id="id"
     >
     <span class="osg-checkbox__checkmark"></span
     ><span class="osg-u-padding-left-3 osg-checkbox__text">
@@ -27,11 +26,10 @@
       },
       label: {
         type: String,
-        default: 'Checkbox text'
-      },
-      id: {
-        type: String,
-        default: 'Checkbox-id'
+        required: true,
+        validator: value => {
+          return value !== ''
+        }
       }
     }
   }
