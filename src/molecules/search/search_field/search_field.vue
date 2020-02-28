@@ -1,16 +1,19 @@
 <template>
-  <div class="osg-searchfield" :class="'osg-searchfield--'+stateIcons">
-    <input
+  <div class="osg-searchfield" :class="`osg-searchfield--${iconState}`">
+    <label>
+      <input
       class="osg-searchfield__input osg-u-text-5 osg-form-component"
-      :id="id"
+      type="search"
+      :autocomplete="autocomplete"
       :name="name"
-      type="text"
       :placeholder="placeholder"
       :value="value"
       v-on:input="$emit('input', $event.target.value)"/>
-    <osg-vue-icon v-if="stateIcons"
-      :iconName="'magnifying-glass-small'"
+      <osg-vue-icon v-if="iconState"
+      iconName="magnifying-glass-small"
       class="osg-searchfield__icon"/>
+      <span class="osg-sr-only">{{label}}</span>
+    </label>
 
   </div>
 </template>
@@ -26,25 +29,36 @@
     },
 
     props: {
-      stateIcons: {
+      iconState: {
         type: String,
-        default: ""
+        default: "",
+        validator: value => {
+          return ['right', 'left', ''].includes(value);
+        }
       },
       value: {
         type: String,
         default: ""
       },
       placeholder: {
-        type: String,
-        default: 'Søk her'
+        type: String
       },
       name: {
-        type: String,
-        default: 'Search field'
+        type: String
       },
-      id: {
+      label: {
         type: String,
-        default: 'Search field'
+        required: true,
+        validator: value => {
+          return value !== ''
+        }
+      },
+      autocomplete: {
+        type: String,
+        default: 'off',
+        validator: value => {
+          return ['on', 'off'].includes(value);
+        }
       }
     }
   }
