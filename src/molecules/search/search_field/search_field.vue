@@ -55,7 +55,7 @@
       },
       autocomplete: {
         type: String,
-        default: 'off',
+        default: 'on',
         validator: value => {
           return ['on', 'off'].includes(value);
         }
