@@ -1,6 +1,7 @@
 <template>
   <div class="osg-searchfield" :class="`osg-searchfield--${iconState}`">
     <label>
+      <span class="osg-sr-only">{{label}}</span>
       <input
       class="osg-searchfield__input osg-u-text-5 osg-form-component"
       type="search"
@@ -12,7 +13,6 @@
       <osg-vue-icon v-if="iconState"
       iconName="magnifying-glass-small"
       class="osg-searchfield__icon"/>
-      <span class="osg-sr-only">{{label}}</span>
     </label>
 
   </div>
