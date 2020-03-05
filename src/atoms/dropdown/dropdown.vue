@@ -4,14 +4,18 @@
       :id="id"
       :name="name"
       :disabled="disabled"
-      :required="required">
-      <option
-        v-for="selectOption in selectOptions" 
-        :key="selectOption.value"
-        :value="selectOption.value"
-      >
-        {{selectOption.name}}
-      </option>
+      :required="required"
+      v-model="selectValue"
+    >
+      <slot>
+        <option
+          v-for="selectOption in selectOptions" 
+          :key="selectOption.value"
+          :value="selectOption.value"
+        >
+          {{selectOption.name}}
+        </option>
+      </slot>
     </select>
   </div>
 </template>
@@ -36,6 +40,19 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    value: {
+      type: String
+    }
+  },
+  computed: {
+    selectValue: {
+      get() {
+        return this.value;
+      },
+      set(updatedValue) {
+        this.$emit("input", updatedValue);
+      }
     }
   }
 }
