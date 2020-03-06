@@ -3,7 +3,7 @@
     class="osg-button"
     :class="[{ 'osg-button--outline': isOutline, 'osg-button--circle': isCircle }, 'osg-button--' + color]"
     v-bind="attrs"
-    @click="$emit('click')">
+    @click="onClick">
     <slot />
   </button>
 </template>
@@ -21,6 +21,10 @@
       isOutline: {
         type: Boolean,
         default: false
+      },
+
+      onClick: {
+        type: Function
       },
 
       isCircle: {
