@@ -1,6 +1,6 @@
 <template>
   <div class="osg-dropdownfield" :disabled="disabled" >
-    <select class="osg-u-text-5 osg-form-component select-form"
+    <select class="osg-u-text-5 osg-form-component"
       :id="id"
       :name="name"
       :disabled="disabled"
