@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [0.0.5] - 2020-03-06
+
+### Fixed
+
+- atoms-checkbox: fixed two-way interaction.
+
 ## [0.0.4] - 2020-03-06
 
 ### Fixed
