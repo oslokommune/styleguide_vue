@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [0.0.4] - 2020-03-06
+
+### Fixed
+- atoms-buttons-button: Added property for providing a button click function
+
+### Added
+
+- atoms-dropdown: added single-select dropdown component.
+- molecules-search-search_field: added search field form component.
+- atoms-checkbox: added checkbox form component.
+
 ## [0.0.3] - 2019-11-20
 
 ### Fixed 
