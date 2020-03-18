@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- molecules-forms-input-datepicker: adds component
+
 ### Removed
 
 ### Changed
@@ -34,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.3] - 2019-11-20
 
-### Fixed 
+### Fixed
 
 - organisms-headings-carousel: changed from .prepend() to insertBefore() for browser compatibility
 
