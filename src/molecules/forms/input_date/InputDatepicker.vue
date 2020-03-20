@@ -47,7 +47,7 @@
 </template>
 
 <script>
-  import OsgInputDate from "@/components/osg/OsgInputDate";
+  import OsgInputDate from "styleguide_vue/src/molecules/forms/input_date/InputDate";
   import OsgVueIcon from "styleguide_vue/src/atoms/icons/icon/icon";
   import CoreDatepicker from "@nrk/core-datepicker";
   window.customElements.define("nrk-core-datepicker", CoreDatepicker);
