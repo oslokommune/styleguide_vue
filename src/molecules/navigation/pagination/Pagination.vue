@@ -78,5 +78,5 @@
 
 <style lang="scss" scoped>
   @import "~styleguide/src/assets/sass/resources.sass";
-  @import "~styleguide/src/molecules/forms/input_date/input_date"
+  @import "~styleguide/src/molecules/navigation/pagination/pagination.sass";
 </style>
