@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/oslokommune/styleguide_vue#readme",
   "peerDependencies": {
+    "@nrk/core-datepicker": "^3.0.8",
+    "@webcomponents/custom-elements": "^1.3.2",
     "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.36.0",
     "@chenfengyuan/vue-countdown": "^1.1.2"
   }
