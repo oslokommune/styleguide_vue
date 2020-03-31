@@ -1,11 +1,10 @@
 <template>
-  <i :class="'osg-u-icon-' + iconName"></i>
+  <span class="osg-icon" :class="`osg-u-icon-${iconName}`" aria-hidden="true"></span>
 </template>
 
 <script>
   export default {
     name: 'OsgVueIcon',
-
     props: {
       iconName: {
         type: String,

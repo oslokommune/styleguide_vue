@@ -8,10 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - YYYY-MM-DD
 
 ### Fixed
+- atoms-icons-icon: fix A11y, adds aria-hidden
+- atoms-icons-icon: fix BEM block class
 
 ### Added
 - molecules-forms-input_date: adds component
-
 - molecules-forms-input-datepicker: adds component
 
 ### Removed
