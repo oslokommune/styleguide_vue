@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - molecules-forms-input_date: adds component
 - molecules-forms-input-datepicker: adds component
 
+- molecules-navigation-pagination: adds component
+
 ### Removed
 
 ### Changed
