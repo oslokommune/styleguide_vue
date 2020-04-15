@@ -45,19 +45,15 @@
       <div class="osg-carousel__shapes">
         <osg-vue-shape
           v-if="hasSquaredShape"
-          :class="[
-            'osg-carousel__squared-shape',
-            `osg-u-color-bg-${squareColor}`
-          ]"
+          class="osg-carousel__shape"
+          :class="`osg-carousel__shape--color-${squareColor}`"
         />
 
         <osg-vue-shape
           v-if="hasCircularShape"
-          :isCircle="true"
-          :class="[
-            'osg-carousel__circular-shape',
-            `osg-u-color-bg-${circleColor}`
-          ]"
+          :isCircle="hasCircularShape"
+          class="osg-carousel__shape"
+          :class="`osg-carousel__shape--color-${circleColor}`"
         />
       </div>
     </div>
@@ -350,7 +346,8 @@
   }
 </script>
 
-<style lang="sass">
-  @import "./carousel.sass"
+<style lang="scss" scoped>
+  @import "~styleguide/src/assets/sass/resources.sass";
+  @import "./carousel.sass";
 </style>
 
