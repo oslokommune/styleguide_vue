@@ -1,6 +1,3 @@
-@import "~styleguide/src/assets/sass/resources.sass"
-@import "~styleguide/src/assets/sass/common/_utils.sass"
-
 $osg-carousel-image-height-mobile: 290
 $osg-carousel-image-height-tablet: 540
 $osg-carousel-image-height-desktop: 725
@@ -51,7 +48,7 @@ $osg-shape-size: 149px
     flex-grow: 1
     flex-shrink: 0
 
-  &__navigation 
+  &__navigation
     display: flex
     align-items: center
     justify-content: space-between
@@ -95,15 +92,13 @@ $osg-shape-size: 149px
       height: #{$osg-carousel-image-height-tablet}px
     +osg-mq-desktop-and-up
       height: #{$osg-carousel-image-height-desktop}px
-    
-  &__squared-shape 
-    width: 50%
-    height: $osg-shape-size
-    width: $osg-shape-size
 
-  &__circular-shape
+  &__shape
     height: $osg-shape-size
     width: $osg-shape-size
+    @each $name, $color in $osg-colors
+      &--color-#{$name}
+        background-color: $color
 
   &__info
     +osg-mq-mobile-only
