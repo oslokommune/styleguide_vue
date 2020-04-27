@@ -1,5 +1,5 @@
 <template>
-  <span class="osg-icon" :class="`osg-u-icon-${iconName}`" aria-hidden="true"></span>
+  <span class="osg-icon" :class="`osg-icon--${iconName}`" aria-hidden="true"></span>
 </template>
 
 <script>
