@@ -21,51 +21,39 @@
       </div>
 
       <div class="osg-carousel__navigation" v-if="this.images.length > 1">
-        <a
-          @click.prevent="goToPrev"
-          target="_self"
-          href="#"
-        >
-          <osg-vue-button
+        <osg-vue-button
             class="osg-carousel__previous-button"
             :is-circle="true"
             :color="navigationArrowColor"
-          >
-            <osg-vue-icon :iconName="icons.previousIcon" />
-          </osg-vue-button>
-        </a>
-
-        <a
-          @click.prevent="goToNext"
-          target="_self"
-          href="#"
+            aria-label="Forrige bilde"
+            :on-click="goToPrev"
         >
-          <osg-vue-button
+          <osg-vue-icon :iconName="icons.previousIcon" />
+        </osg-vue-button>
+
+        <osg-vue-button
             class="osg-carousel__next-button"
             :is-circle="true"
             :color="navigationArrowColor"
-          >
-            <osg-vue-icon :iconName="icons.nextIcon" />
-          </osg-vue-button>
-        </a>
+            aria-label="Neste bilde"
+            :on-click="goToNext"
+        >
+          <osg-vue-icon :iconName="icons.nextIcon" />
+        </osg-vue-button>
       </div>
 
       <div class="osg-carousel__shapes">
         <osg-vue-shape
           v-if="hasSquaredShape"
-          :class="[
-            'osg-carousel__squared-shape',
-            `osg-u-color-bg-${squareColor}` 
-          ]"
+          class="osg-carousel__shape"
+          :class="`osg-carousel__shape--color-${squareColor}`"
         />
 
         <osg-vue-shape
           v-if="hasCircularShape"
-          :isCircle="true"
-          :class="[
-            'osg-carousel__circular-shape',
-            `osg-u-color-bg-${circleColor}`
-          ]"
+          :isCircle="hasCircularShape"
+          class="osg-carousel__shape"
+          :class="`osg-carousel__shape--color-${circleColor}`"
         />
       </div>
     </div>
@@ -128,7 +116,7 @@
         type: Object,
         default: () => null
       },
-    
+
       icons: {
         type: Object,
         default () {
@@ -138,7 +126,7 @@
           }
         }
       },
-      
+
       images: {
         type: Array,
         required: true
@@ -282,7 +270,7 @@
           slide.classList.add("osg-carousel__slide")
         }
       },
-      
+
       /**
        * Prepare carousel styles
        */
@@ -358,7 +346,8 @@
   }
 </script>
 
-<style lang="sass">
-  @import "./carousel.sass"
+<style lang="scss" scoped>
+  @import "~styleguide/src/assets/sass/resources.sass";
+  @import "./carousel.sass";
 </style>
 

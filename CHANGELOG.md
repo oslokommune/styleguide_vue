@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [0.0.6] - 2020-04-29
+
+### Fixed
+- atoms-icons-icon: fix A11y, adds aria-hidden
+- atoms-icons-icon: fix BEM block class
+- organisms-headings-carousel: fix A11y
+
+### Added
+- molecules-forms-input_date: adds component
+- molecules-forms-input-datepicker: adds component
+- molecules-navigation-pagination: adds component
+
 ## [0.0.5] - 2020-03-06
 
 ### Fixed
@@ -34,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.3] - 2019-11-20
 
-### Fixed 
+### Fixed
 
 - organisms-headings-carousel: changed from .prepend() to insertBefore() for browser compatibility
 
