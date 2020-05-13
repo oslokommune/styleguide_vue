@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - YYYY-MM-DD
 
 ### Fixed
+- organisms-headings-carousel: fix deep selector for scoped styles
 
 ### Added
 
