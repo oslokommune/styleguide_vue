@@ -1,6 +1,6 @@
 {
   "name": "styleguide_vue",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Oslo Styleguide - Vue atomic patterns",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@nrk/core-datepicker": "^3.0.8",
     "@webcomponents/custom-elements": "^1.3.2",
-    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.37.2",
+    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.38.0",
     "@chenfengyuan/vue-countdown": "^1.1.2"
   }
 }
