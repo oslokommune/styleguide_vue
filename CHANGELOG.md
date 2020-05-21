@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [0.0.7] - 2020-05-20
+
+### Fixed
+- organisms-headings-carousel: fix deep selector for scoped styles
+
+### Added
+
+### Removed
+
+### Changed
+
 ## [0.0.6] - 2020-04-29
 
 ### Fixed
