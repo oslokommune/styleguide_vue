@@ -40,10 +40,6 @@ describe('InputDate.vue', () => {
     expect(wrapper.find('label').text()).toEqual('Foo');
   })
 
-  /*it('has value', () => {
-    expect(wrapper.find('input').attributes()['value']).toEqual('2020-08-10');
-  })*/
-
   it("has value", () => {
     const expectedValue = '2020-08-10';
     const parent = mount({
