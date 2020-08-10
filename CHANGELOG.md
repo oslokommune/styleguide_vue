@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - organisms-headings-carousel: fixes mobile first styling
 
 ### Added
+- unit-tests: adds unit test suite. happy testing
 
 ### Removed
 
