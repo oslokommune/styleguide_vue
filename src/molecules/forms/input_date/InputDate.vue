@@ -67,9 +67,15 @@
     },
     computed: {
       max: function() {
+        if(!this.maxDate) {
+          return;
+        }
         return this.formatDateObjToIso(this.maxDate);
       },
       min: function() {
+        if(!this.minDate) {
+          return;
+        }
         return this.formatDateObjToIso(this.minDate);
       },
       isInvalid: function() {

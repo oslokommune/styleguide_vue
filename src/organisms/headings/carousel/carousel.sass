@@ -4,12 +4,6 @@ $osg-carousel-image-height-desktop: 725
 
 // Variables for navigation
 $osg-carousel-navigation-button-size: 40
-$osg-carousel-navigation-button-size-one-forth: 40/4
-
-// Calculate top values so to center navigation buttons in the middle of picture
-$osg-carousel-navigation-top-mobile: #{$osg-carousel-image-height-mobile/2 - $osg-carousel-navigation-button-size-one-forth}px
-$osg-carousel-navigation-top-tablet: #{$osg-carousel-image-height-tablet/2 - $osg-carousel-navigation-button-size-one-forth}px
-$osg-carousel-navigation-top-desktop: #{$osg-carousel-image-height-desktop/2 - $osg-carousel-navigation-button-size-one-forth}px
 
 $osg-shape-size: 149px
 
@@ -57,38 +51,35 @@ $osg-shape-size: 149px
     height: 100%
     z-index: 2
     top: 0
-    +osg-mq-mobile-only
-      i
-        font-size: 22px
-
-    a
-      text-decoration: none
-
-  &__previous-button
-    margin-left: 25px
-
-  &__next-button
-    margin-right: 25px
+    font-size: 22px
+    +osg-mq-tablet-and-up
+      ::v-deep .osg-icon
+        font-size: 32px
 
   &__previous-button,
   &__next-button
-    +osg-mq-mobile-only
-      height: #{$osg-carousel-navigation-button-size}px
-      width: #{$osg-carousel-navigation-button-size}px
-      min-height: #{$osg-carousel-navigation-button-size}px
-      min-width: #{$osg-carousel-navigation-button-size}px
-      padding: 0
-      margin: 0
+    height: #{$osg-carousel-navigation-button-size}px
+    width: #{$osg-carousel-navigation-button-size}px
+    min-height: #{$osg-carousel-navigation-button-size}px
+    min-width: #{$osg-carousel-navigation-button-size}px
+    padding: 0
+    margin: 0
+    +osg-mq-tablet-and-up
+      height: auto
+      width: auto
+      min-width: auto
+      min-height: auto
+      padding: 15px
+      margin: 0 25px
 
   &__shapes
-    display: flex
+    display: none
     align-items: flex-end
     width: 100%
     top: 0
     position: absolute
-    +osg-mq-mobile-only
-      display: none
     +osg-mq-tablet-and-up
+      display: flex
       height: #{$osg-carousel-image-height-tablet}px
     +osg-mq-desktop-and-up
       height: #{$osg-carousel-image-height-desktop}px
@@ -101,5 +92,6 @@ $osg-shape-size: 149px
         background-color: $color
 
   &__info
-    +osg-mq-mobile-only
-      margin-left: 15px
+    margin-left: 15px
+    +osg-mq-tablet-and-up
+      margin-left: 0
