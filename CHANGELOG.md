@@ -8,14 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - YYYY-MM-DD
 
 ### Fixed
-- organisms-headings-carousel: fixes mobile first styling
 
 ### Added
-- unit-tests: adds unit test suite. happy testing
 
 ### Removed
 
 ### Changed
+
+## [0.0.8] - 2020-08-11
+
+### Fixed
+- organisms-headings-carousel: fixes mobile first styling
+
+### Added
+- unit-tests: adds unit test suite. happy testing
 
 ## [0.0.7] - 2020-05-20
 
