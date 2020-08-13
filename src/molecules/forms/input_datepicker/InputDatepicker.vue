@@ -162,75 +162,6 @@
   };
 </script>
 
-<style lang="scss">
-  @import "~styleguide/src/assets/sass/resources.sass";
-  /*
-   * nrk-core-datepicker styling
-   * - Global styles to reach child component
-   * - Element styles since missing classes on child component
-   */
-  .osg-input-datepicker__datepicker-calendar {
-    caption,
-    th {
-      font-weight: normal;
-    }
-
-    caption {
-      margin-bottom: $osg-space-2;
-      margin-top: $osg-space-1;
-      text-transform: capitalize;
-    }
-
-    thead {
-      border-bottom: 1px solid $osg-color-blue-dark;
-      border-top: 1px solid $osg-color-blue-dark;
-    }
-
-    th {
-      padding: $osg-space-1 0;
-      text-align: center;
-      text-transform: capitalize;
-    }
-
-    td {
-      text-align: center;
-
-      button {
-        @include osg-common-button-circle;
-
-        // next/prev month
-        &[data-adjacent="true"] {
-          font-size: 14px;
-        }
-
-        &:not(:disabled) {
-          cursor: pointer;
-        }
-
-        // today
-        &[aria-current="date"] {
-          background-color: $osg-color-beige;
-        }
-
-        // selected
-        &[autofocus] {
-          background-color: $osg-color-blue-dark;
-          color: $osg-color-white;
-
-          &:focus,
-          &:hover {
-            background-color: $osg-color-blue-hover;
-            color: $osg-color-white;
-          }
-        }
-
-        &:disabled {
-          color: $osg-color-disabled;
-        }
-      }
-    }
-  }
-</style>
 <style lang="scss" scoped>
   @import "~styleguide/src/assets/sass/resources.sass";
   .osg-input-datepicker {
@@ -320,6 +251,72 @@
 
       &-nav-icon {
         transform: rotate(90deg);
+      }
+    }
+  }
+
+  /*
+   * nrk-core-datepicker styling
+   * - Element styles since missing classes on child component
+   */
+  .osg-input-datepicker__datepicker-calendar ::v-deep {
+    caption,
+    th {
+      font-weight: normal;
+    }
+
+    caption {
+      margin-bottom: $osg-space-2;
+      margin-top: $osg-space-1;
+      text-transform: capitalize;
+    }
+
+    thead {
+      border-bottom: 1px solid $osg-color-blue-dark;
+      border-top: 1px solid $osg-color-blue-dark;
+    }
+
+    th {
+      padding: $osg-space-1 0;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    td {
+      text-align: center;
+
+      button {
+        @include osg-common-button-circle;
+
+        // next/prev month
+        &[data-adjacent="true"] {
+          font-size: 14px;
+        }
+
+        &:not(:disabled) {
+          cursor: pointer;
+        }
+
+        // today
+        &[aria-current="date"] {
+          background-color: $osg-color-beige;
+        }
+
+        // selected
+        &[autofocus] {
+          background-color: $osg-color-blue-dark;
+          color: $osg-color-white;
+
+          &:focus,
+          &:hover {
+            background-color: $osg-color-blue-hover;
+            color: $osg-color-white;
+          }
+        }
+
+        &:disabled {
+          color: $osg-color-disabled;
+        }
       }
     }
   }

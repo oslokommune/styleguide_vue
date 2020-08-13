@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Changed
+- molecules-forms-input-datepicker: changes global styling to scoped
 
 ## [0.0.8] - 2020-08-11
 
@@ -27,12 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - organisms-headings-carousel: fix deep selector for scoped styles
-
-### Added
-
-### Removed
-
-### Changed
 
 ## [0.0.6] - 2020-04-29
 
