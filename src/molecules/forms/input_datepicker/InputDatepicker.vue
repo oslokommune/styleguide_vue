@@ -209,7 +209,6 @@
       box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
-      margin-top: $osg-space-1 - $osg-space-4;
       padding: $padding;
       position: absolute;
       width: 290px + ($padding * 2);
