@@ -212,7 +212,7 @@
       padding: $padding;
       position: absolute;
       width: 290px + ($padding * 2);
-      z-index: 7000;
+      z-index: 99;
 
       &-nav,
       &-nav-button {

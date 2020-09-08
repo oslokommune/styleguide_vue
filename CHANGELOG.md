@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - organisms-headings-carousel: fixes mobile font size
 - molecules-forms-input-datepicker: remove negative top margin
+- molecules-forms-input-datepicker: change z index
 
 ### Added
 
