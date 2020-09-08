@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import OsgVueContentBox from "../../../molecules/content_display/content_box/content_box";
-import OsgVueFigure from "../../../atoms/decorators/figure/figure.vue";
+import OsgVueContentBox from '../../../molecules/content_display/content_box/content_box'
+import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
 
 export default {
-  name: "OsgListCard",
+  name: 'OsgListCard',
 
   components: {
     OsgVueContentBox,
@@ -89,6 +89,6 @@ export default {
     searchResultUrl: {
       type: String
     }
-  },
-};
+  }
+}
 </script>

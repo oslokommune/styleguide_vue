@@ -34,44 +34,40 @@
 
 <script>
 
-  export default {
-    name: "OsgInfoList",
+export default {
+  name: 'OsgInfoList',
 
-    props: {
-      calendarTitle: {
-        type: String,
-        required: true,
-      },
-
-      calendarText: {
-        type: String,
-      },
-
-      calendarUrl: {
-        type: String,
-      },
-      
-      locationTitle: {
-        type: String,
-        required: true,
-      },
-
-      locationText: {
-        type: String,
-      },
-
-      locationUrlText: {
-        type: String,
-      },
-
-      locationUrl: {
-        type: String,
-      }
+  props: {
+    calendarTitle: {
+      type: String,
+      required: true
     },
+
+    calendarText: {
+      type: String
+    },
+
+    calendarUrl: {
+      type: String
+    },
+
+    locationTitle: {
+      type: String,
+      required: true
+    },
+
+    locationText: {
+      type: String
+    },
+
+    locationUrlText: {
+      type: String
+    },
+
+    locationUrl: {
+      type: String
+    }
   }
-  
+}
+
 </script>
-
-
-
-

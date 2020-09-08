@@ -38,40 +38,40 @@
 </template>
 
 <script>
-  import OsgVueButton from '../../../atoms/buttons/button/button'
+import OsgVueButton from '../../../atoms/buttons/button/button'
 
-  export default {
-    name: 'OsgVueNavbarMenuServices',
+export default {
+  name: 'OsgVueNavbarMenuServices',
 
-    components: {
-      OsgVueButton
+  components: {
+    OsgVueButton
+  },
+
+  props: {
+    isExpanded: {
+      type: Boolean,
+      required: false
     },
 
-    props: {
-      isExpanded: {
-        type: Boolean,
-        required: false
-      },
+    hasOverlay: {
+      type: Boolean,
+      required: false
+    },
 
-      hasOverlay: {
-        type: Boolean,
-        required: false
-      },
+    menuText: {
+      type: String,
+      required: true
+    },
 
-      menuText: {
-        type: String,
-        required: true
-      },
+    menuListExpanded: {
+      type: String,
+      required: true
+    },
 
-      menuListExpanded: {
-        type: String,
-        required: true
-      },
-
-      srMenuTextClose: {
-        type: String,
-        required: true
-      }
+    srMenuTextClose: {
+      type: String,
+      required: true
     }
   }
+}
 </script>

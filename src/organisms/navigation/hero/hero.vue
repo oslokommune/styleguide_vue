@@ -28,67 +28,67 @@
 </template>
 
 <script>
-  import OsgVueShape from '../../../atoms/decorators/shape/shape'
-  export default {
-    name: 'OsgVueHero',
+import OsgVueShape from '../../../atoms/decorators/shape/shape'
+export default {
+  name: 'OsgVueHero',
 
-    components: {
-      OsgVueShape
+  components: {
+    OsgVueShape
+  },
+
+  props: {
+    url: {
+      type: String,
+      default: null
     },
 
-    props: {
-      url: {
-        type: String,
-        default: null
-      },
+    urlTitle: {
+      type: String
+    },
 
-      urlTitle: {
-        type: String
-      },
+    target: {
+      type: String,
+      default: null
+    },
 
-      target: {
-        type: String,
-        default: null
-      },
+    isCircle: {
+      type: Boolean,
+      default: false
+    },
 
-      isCircle: {
-        type: Boolean,
-        default: false
-      },
+    contentPosition: {
+      type: String,
+      default: 'right'
+    },
 
-      contentPosition: {
-        type: String,
-        default: 'right'
-      },
+    contentPositionTablet: {
+      type: String,
+      default: 'right'
+    },
 
-      contentPositionTablet: {
-        type: String,
-        default: 'right'
-      },
+    imageUrl: {
+      type: String
+    },
 
-      imageUrl: {
-        type: String
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String
+    },
 
-      imageSrDescription: {
-        type: String
-      },
-
-      imageCaption: {
-        type: String
-      }
+    imageCaption: {
+      type: String
     }
   }
+}
 </script>

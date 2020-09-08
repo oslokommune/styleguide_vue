@@ -47,119 +47,119 @@
 </template>
 
 <script>
-  import OsgInputDate from "styleguide_vue/src/molecules/forms/input_date/InputDate";
-  import OsgVueIcon from "styleguide_vue/src/atoms/icons/icon/icon";
-  import CoreDatepicker from "@nrk/core-datepicker";
-  window.customElements.define("nrk-core-datepicker", CoreDatepicker);
+import OsgInputDate from 'styleguide_vue/src/molecules/forms/input_date/InputDate'
+import OsgVueIcon from 'styleguide_vue/src/atoms/icons/icon/icon'
+import CoreDatepicker from '@nrk/core-datepicker'
+window.customElements.define('nrk-core-datepicker', CoreDatepicker)
 
-  export default {
-    name: "OsgInputDatepicker",
-    components: {
-      OsgInputDate,
-      "osg-icon": OsgVueIcon
+export default {
+  name: 'OsgInputDatepicker',
+  components: {
+    OsgInputDate,
+    'osg-icon': OsgVueIcon
+  },
+  props: {
+    value: {
+      type: String
     },
-    props: {
-      value: {
-        type: String
-      },
-      label: {
-        type: String,
-        required: true
-      },
-      placeholder: {
-        type: String,
-        default: "dd.mm.åååå"
-      },
-      inputName: {
-        type: String,
-        default: ""
-      },
-      validation: {
-        type: Object
-      },
-      maxDate: {
-        type: Date
-      },
-      minDate: {
-        type: Date
-      }
+    label: {
+      type: String,
+      required: true
     },
-    data: function() {
-      return {
-        datepicker: null,
-        datepickerDate: new Date(Date.now()),
-        isDatepickerOpen: false
-      };
+    placeholder: {
+      type: String,
+      default: 'dd.mm.åååå'
     },
-    mounted: function() {
-      this.datepicker = this.$refs.datepicker;
-      this.datepicker.disabled = date => {
-        return (
-          (this.maxDate && date > this.maxDate.setHours(23, 59, 59, 999)) ||
+    inputName: {
+      type: String,
+      default: ''
+    },
+    validation: {
+      type: Object
+    },
+    maxDate: {
+      type: Date
+    },
+    minDate: {
+      type: Date
+    }
+  },
+  data: function () {
+    return {
+      datepicker: null,
+      datepickerDate: new Date(Date.now()),
+      isDatepickerOpen: false
+    }
+  },
+  mounted: function () {
+    this.datepicker = this.$refs.datepicker
+    this.datepicker.disabled = date => {
+      return (
+        (this.maxDate && date > this.maxDate.setHours(23, 59, 59, 999)) ||
           (this.minDate && date < this.minDate)
-        );
-      };
-      this.datepicker.addEventListener("datepicker.change", this.onDatepickerChange);
-      this.datepicker.addEventListener("datepicker.click.day", this.onDatepickerClickDay);
-      window.addEventListener("click", this.onDatepickerOutside);
-      window.addEventListener("keyup", this.onDatepickerOutside);
-    },
-    destroyed: function() {
-      this.datepicker.removeEventListener("datepicker.change", this.onDatepickerChange);
-      this.datepicker.removeEventListener("datepicker.click.day", this.onDatepickerClickDay);
-      window.removeEventListener("click", this.onDatepickerOutside);
-      window.removeEventListener("keyup", this.onDatepickerOutside);
-    },
-    computed: {
-      inputValue: {
-        get() {
-          return this.value;
-        },
-        set(inputValue) {
-          this.$emit("input", inputValue);
-        }
-      }
-    },
-    methods: {
-      onDatepickerOpen: function() {
-        this.isDatepickerOpen = true;
+      )
+    }
+    this.datepicker.addEventListener('datepicker.change', this.onDatepickerChange)
+    this.datepicker.addEventListener('datepicker.click.day', this.onDatepickerClickDay)
+    window.addEventListener('click', this.onDatepickerOutside)
+    window.addEventListener('keyup', this.onDatepickerOutside)
+  },
+  destroyed: function () {
+    this.datepicker.removeEventListener('datepicker.change', this.onDatepickerChange)
+    this.datepicker.removeEventListener('datepicker.click.day', this.onDatepickerClickDay)
+    window.removeEventListener('click', this.onDatepickerOutside)
+    window.removeEventListener('keyup', this.onDatepickerOutside)
+  },
+  computed: {
+    inputValue: {
+      get () {
+        return this.value
       },
-      onDatepickerClose: function() {
-        this.isDatepickerOpen = false;
-      },
-      onDatepickerOutside: function(event) {
-        if (!this.$el.contains(event.target)) {
-          this.isDatepickerOpen = false;
-        }
-      },
-      onDatepickerChange: function(event) {
-        this.datepickerDate = event.detail;
-      },
-      onDatepickerClickDay: function() {
-        this.$emit(
-          "input",
-          `${this.datepicker.day}.${this.datepicker.month}.${this.datepicker.year}`
-        );
-        this.onDatepickerClose();
-      },
-      datepickerPaginateMonth: function(step) {
-        if (this.datepicker) {
-          const next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step);
-          return Math.max(
-            this.minDate || 0,
-            Math.min(this.maxDate.setHours(23, 59, 59, 999) || Infinity, next)
-          );
-        }
-      },
-      datepickerPaginateMonthDisabled: function(step) {
-        if (this.datepicker) {
-          let next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step);
-          next = new Date(next).setDate(1);
-          return (step > 0 && next > this.maxDate) || next < this.minDate;
-        }
+      set (inputValue) {
+        this.$emit('input', inputValue)
       }
     }
-  };
+  },
+  methods: {
+    onDatepickerOpen: function () {
+      this.isDatepickerOpen = true
+    },
+    onDatepickerClose: function () {
+      this.isDatepickerOpen = false
+    },
+    onDatepickerOutside: function (event) {
+      if (!this.$el.contains(event.target)) {
+        this.isDatepickerOpen = false
+      }
+    },
+    onDatepickerChange: function (event) {
+      this.datepickerDate = event.detail
+    },
+    onDatepickerClickDay: function () {
+      this.$emit(
+        'input',
+          `${this.datepicker.day}.${this.datepicker.month}.${this.datepicker.year}`
+      )
+      this.onDatepickerClose()
+    },
+    datepickerPaginateMonth: function (step) {
+      if (this.datepicker) {
+        const next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step)
+        return Math.max(
+          this.minDate || 0,
+          Math.min(this.maxDate.setHours(23, 59, 59, 999) || Infinity, next)
+        )
+      }
+    },
+    datepickerPaginateMonthDisabled: function (step) {
+      if (this.datepicker) {
+        let next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step)
+        next = new Date(next).setDate(1)
+        return (step > 0 && next > this.maxDate) || next < this.minDate
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

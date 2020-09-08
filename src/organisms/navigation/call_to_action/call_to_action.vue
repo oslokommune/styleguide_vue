@@ -17,40 +17,40 @@
 </template>
 
 <script>
-  import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
-  export default {
-    name: 'OsgVueCallToAction',
+import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
+export default {
+  name: 'OsgVueCallToAction',
 
-    components: {
-      OsgVueFigure
+  components: {
+    OsgVueFigure
+  },
+
+  props: {
+    imageUrl: {
+      type: String,
+      required: true
     },
 
-    props: {
-      imageUrl: {
-        type: String,
-        required: true
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String,
+      required: true
+    },
 
-      imageSrDescription: {
-        type: String,
-        required: true
-      },
-
-      imageCaption: {
-        type: String
-      }
+    imageCaption: {
+      type: String
     }
   }
+}
 </script>

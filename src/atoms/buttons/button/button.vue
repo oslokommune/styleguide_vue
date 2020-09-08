@@ -9,34 +9,33 @@
 </template>
 
 <script>
-  export default {
-    name: 'OsgVueButton',
+export default {
+  name: 'OsgVueButton',
 
-    props: {
-      attrs: {
-        type: Object,
-        default: () => ({})
-      },
+  props: {
+    attrs: {
+      type: Object,
+      default: () => ({})
+    },
 
-      isOutline: {
-        type: Boolean,
-        default: false
-      },
+    isOutline: {
+      type: Boolean,
+      default: false
+    },
 
-      onClick: {
-        type: Function
-      },
+    onClick: {
+      type: Function
+    },
 
-      isCircle: {
-        type: Boolean,
-        default: false
-      },
+    isCircle: {
+      type: Boolean,
+      default: false
+    },
 
-      color: {
-        type: String,
-        default: 'blue-dark'
-      }
+    color: {
+      type: String,
+      default: 'blue-dark'
     }
   }
+}
 </script>
-

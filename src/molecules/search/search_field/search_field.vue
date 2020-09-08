@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import OsgVueIcon from '../../../atoms/icons/icon/icon'
+import OsgVueIcon from './../../../atoms/icons/icon/icon'
 
 export default {
   name: 'OsgVueSearchField',
@@ -33,14 +33,14 @@ export default {
   props: {
     iconPosition: {
       type: String,
-      default: "",
+      default: '',
       validator: value => {
-        return ['right', 'left', ''].includes(value);
+        return ['right', 'left', ''].includes(value)
       }
     },
     value: {
       type: String,
-      default: ""
+      default: ''
     },
     placeholder: {
       type: String
@@ -61,14 +61,14 @@ export default {
     }
   },
   computed: {
-    iconPositionClass: function() {
+    iconPositionClass: function () {
       return `osg-searchfield--${this.iconPosition}`
     },
-    autocompleteString: function() {
+    autocompleteString: function () {
       return this.autocomplete ? 'on' : 'off'
     },
-    validIconPosition: function() {
-      return this.iconPosition == 'left' || this.iconPosition == 'right'
+    validIconPosition: function () {
+      return this.iconPosition === 'left' || this.iconPosition === 'right'
     }
   }
 }

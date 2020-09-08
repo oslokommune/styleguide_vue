@@ -14,35 +14,35 @@
 </template>
 
 <script>
-  export default {
-    name: 'OsgVueFigure',
+export default {
+  name: 'OsgVueFigure',
 
-    props: {
-      url: {
-        type: String,
-        required: true
-      },
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
 
-      urlMobile: {
-        type: String
-      },
+    urlMobile: {
+      type: String
+    },
 
-      urlTablet: {
-        type: String
-      },
+    urlTablet: {
+      type: String
+    },
 
-      urlDesktop: {
-        type: String
-      },
+    urlDesktop: {
+      type: String
+    },
 
-      srDescription: {
-        type: String,
-        required: true
-      },
+    srDescription: {
+      type: String,
+      required: true
+    },
 
-      caption: {
-        type: String
-      }
+    caption: {
+      type: String
     }
   }
+}
 </script>
