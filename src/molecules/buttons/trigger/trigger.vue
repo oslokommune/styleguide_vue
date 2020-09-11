@@ -1,5 +1,5 @@
 <template>
-  <osg-vue-button @click="$emit('toggleState')">
+  <osg-vue-button :on-click="() => $emit('toggleState')">
     <osg-vue-icon :iconName="icon" />
     {{ text }}
   </osg-vue-button>
