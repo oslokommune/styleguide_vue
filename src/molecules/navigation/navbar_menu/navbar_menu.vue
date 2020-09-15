@@ -39,19 +39,19 @@
 </template>
 
 <script>
-  export default {
-    name: "OsgVueNavbarMenu",
+export default {
+  name: 'OsgVueNavbarMenu',
 
-    props: {
-      isOpen: {
-        type: Boolean,
-        default: false
-      },
+  props: {
+    isOpen: {
+      type: Boolean,
+      default: false
+    },
 
-      ariaLabel: {
-        type: String,
-        required: true
-      }
+    ariaLabel: {
+      type: String,
+      required: true
     }
   }
+}
 </script>

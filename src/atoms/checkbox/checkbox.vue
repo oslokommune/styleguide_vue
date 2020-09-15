@@ -34,11 +34,11 @@ export default {
   },
   computed: {
     checkValue: {
-      get() {
-        return this.value;
+      get () {
+        return this.value
       },
-      set(updatedValue) {
-        this.$emit("input", updatedValue);
+      set (updatedValue) {
+        this.$emit('input', updatedValue)
       }
     }
   }

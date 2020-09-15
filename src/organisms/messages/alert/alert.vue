@@ -37,56 +37,56 @@
 </template>
 
 <script>
-  import OsgVueButton from '../../../atoms/buttons/button/button'
-  import OsgVueIcon from '../../../atoms/icons/icon/icon'
+import OsgVueButton from '../../../atoms/buttons/button/button'
+import OsgVueIcon from '../../../atoms/icons/icon/icon'
 
-  export default {
-    name: 'OsgVueAlert',
+export default {
+  name: 'OsgVueAlert',
 
-    components: {
-      OsgVueButton,
-      OsgVueIcon
+  components: {
+    OsgVueButton,
+    OsgVueIcon
+  },
+
+  props: {
+    icon: {
+      type: String,
+      required: true
     },
 
-    props: {
-      icon: {
-        type: String,
-        required: true
-      },
-
-      isOpen: {
-        type: Boolean,
-        required: false
-      },
-
-      buttonAriaLabel: {
-        type: String,
-        required: true
-      },
-
-      buttonColor: {
-        type: String,
-        required: false,
-        default: 'yellow'
-      },
-
-      alertAriaLabelledBy: {
-        type: String,
-        required: false
-      },
-
-      alertAriaDescribedBy: {
-        type: String,
-        required: false
-      }
+    isOpen: {
+      type: Boolean,
+      required: false
     },
 
-    computed: {
-      buttonAttrs() {
-        return {
-          'aria-label': this.buttonAriaLabel
-        }
+    buttonAriaLabel: {
+      type: String,
+      required: true
+    },
+
+    buttonColor: {
+      type: String,
+      required: false,
+      default: 'yellow'
+    },
+
+    alertAriaLabelledBy: {
+      type: String,
+      required: false
+    },
+
+    alertAriaDescribedBy: {
+      type: String,
+      required: false
+    }
+  },
+
+  computed: {
+    buttonAttrs () {
+      return {
+        'aria-label': this.buttonAriaLabel
       }
     }
   }
+}
 </script>

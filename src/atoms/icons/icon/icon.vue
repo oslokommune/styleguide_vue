@@ -3,14 +3,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'OsgVueIcon',
-    props: {
-      iconName: {
-        type: String,
-        default: 'chevron-right',
-        required: false
-      }
+export default {
+  name: 'OsgVueIcon',
+  props: {
+    iconName: {
+      type: String,
+      default: 'chevron-right',
+      required: false
     }
   }
+}
 </script>

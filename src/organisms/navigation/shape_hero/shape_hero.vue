@@ -40,58 +40,58 @@
 </template>
 
 <script>
-  import OsgVueShape from '../../../atoms/decorators/shape/shape'
-  export default {
-    name: 'OsgVueShapeHero',
+import OsgVueShape from '../../../atoms/decorators/shape/shape'
+export default {
+  name: 'OsgVueShapeHero',
 
-    components: {
-      OsgVueShape
+  components: {
+    OsgVueShape
+  },
+
+  props: {
+    isCircle: {
+      type: Boolean,
+      default: false
     },
 
-    props: {
-      isCircle: {
-        type: Boolean,
-        default: false
-      },
+    mainColor: {
+      type: String,
+      default: 'yellow'
+    },
 
-      mainColor: {
-        type: String,
-        default: 'yellow'
-      },
+    circleColor: {
+      type: String,
+      default: 'yellow'
+    },
 
-      circleColor: {
-        type: String,
-        default: 'yellow'
-      },
+    circleBgColor: {
+      type: String,
+      default: 'white'
+    },
 
-      circleBgColor: {
-        type: String,
-        default: 'white'
-      },
+    imageUrl: {
+      type: String
+    },
 
-      imageUrl: {
-        type: String
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String
+    },
 
-      imageSrDescription: {
-        type: String
-      },
-
-      imageCaption: {
-        type: String
-      }
+    imageCaption: {
+      type: String
     }
   }
+}
 </script>
