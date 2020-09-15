@@ -8,7 +8,7 @@
   >
     <nav>
       <osg-vue-button
-        @click="$emit('navbarMenuServicesClicked')"
+        :on-click="() => $emit('navbarMenuServicesClicked')"
         class="osg-hamburger-button osg-button--outline"
       >
         <slot name="content">

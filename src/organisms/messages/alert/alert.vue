@@ -20,7 +20,7 @@
         <div class="osg-alert__overlay-top">
           <div class="osg-alert__white-space"></div>
           <osg-vue-button
-            @click="$emit('toggleAlert')"
+            :on-click="() => $emit('toggleAlert')"
             :is-circle="true"
             :color="buttonColor"
             :attrs="buttonAttrs"

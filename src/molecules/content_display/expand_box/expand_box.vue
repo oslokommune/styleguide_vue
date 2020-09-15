@@ -8,7 +8,7 @@
         <slot name="title" />
       </div>
       <osg-vue-button
-        @click="$emit('toggleState')"
+        :on-click="() => $emit('toggleState')"
         :is-circle="true"
         color="yellow"
         :attrs="buttonAttrs"
