@@ -15,7 +15,8 @@
             :url-mobile="image.imageUrlMobile ||image.url"
             :url-tablet="image.imageUrlTablet ||image.url"
             :url-desktop="image.imageUrlDesktop ||image.url"
-            :sr-description="image.caption"
+            :caption="image.caption"
+            :sr-description="image.srDescription || ''"
           />
         </div>
       </div>
