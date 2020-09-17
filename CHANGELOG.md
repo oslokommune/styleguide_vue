@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [0.0.9] - 2020-09-17
+
+### Fixed
+- organisms-headings-carousel: fixes missing caption & missplaced srDescription prop passed to figure component
+- organisms-headings-carousel: fixes mobile font size
+- molecules-forms-input-datepicker: remove negative top margin
+- molecules-forms-input-datepicker: change z index
+- molecules-forms-input-datepicker: changes global styling to scoped
+
 ## [0.0.8] - 2020-08-11
 
 ### Fixed
@@ -27,12 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - organisms-headings-carousel: fix deep selector for scoped styles
-
-### Added
-
-### Removed
-
-### Changed
 
 ## [0.0.6] - 2020-04-29
 

@@ -23,57 +23,56 @@
 </template>
 
 <script>
-  import OsgVueFigure from '../figure/figure.vue'
-  export default {
-    name: 'OsgVueShape',
+import OsgVueFigure from '../figure/figure.vue'
+export default {
+  name: 'OsgVueShape',
 
-    components: {
-      OsgVueFigure
+  components: {
+    OsgVueFigure
+  },
+
+  props: {
+    isCircle: {
+      type: Boolean,
+      default: false
     },
 
-    props: {
-      isCircle: {
-        type: Boolean,
-        default: false
-      },
+    url: {
+      type: String
+    },
 
-      url: {
-        type: String
-      },
+    urlTitle: {
+      type: String
+    },
 
-      urlTitle: {
-        type: String
-      },
+    target: {
+      type: String,
+      default: null
+    },
 
-      target: {
-        type: String,
-        default: null
-      },
+    imageUrl: {
+      type: String
+    },
 
-      imageUrl: {
-        type: String
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String
+    },
 
-      imageSrDescription: {
-        type: String
-      },
-
-      imageCaption: {
-        type: String
-      }
+    imageCaption: {
+      type: String
     }
   }
+}
 </script>
-

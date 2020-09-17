@@ -33,50 +33,50 @@
 </template>
 
 <script>
-  import VueCountdown from '@chenfengyuan/vue-countdown'
-  export default {
-    components: {
-      VueCountdown
+import VueCountdown from '@chenfengyuan/vue-countdown'
+export default {
+  components: {
+    VueCountdown
+  },
+
+  props: {
+    countDownTo: {
+      type: String,
+      required: true
     },
 
-    props: {
-      countDownTo: {
-        type: String,
-        required: true
-      },
-
-      title: {
-        type: String,
-        required: true
-      },
-
-      langDays: {
-        type: String,
-        required: true
-      },
-
-      langHours: {
-        type: String,
-        required: true
-      },
-
-      langMinutes: {
-        type: String,
-        required: true
-      },
-
-      langSeconds: {
-        type: String,
-        required: true
-      }
+    title: {
+      type: String,
+      required: true
     },
 
-    computed: {
-      timeDiff() {
-        return new Date(this.countDownTo) - new Date()
-      }
+    langDays: {
+      type: String,
+      required: true
+    },
+
+    langHours: {
+      type: String,
+      required: true
+    },
+
+    langMinutes: {
+      type: String,
+      required: true
+    },
+
+    langSeconds: {
+      type: String,
+      required: true
+    }
+  },
+
+  computed: {
+    timeDiff () {
+      return new Date(this.countDownTo) - new Date()
     }
   }
+}
 </script>
 
 <style lang="sass" scoped>
@@ -84,6 +84,3 @@
 .osg-countdown > div
   flex-basis: 40%
 </style>
-
-
-

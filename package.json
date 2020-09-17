@@ -1,9 +1,13 @@
 {
   "name": "styleguide_vue",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Oslo Styleguide - Vue atomic patterns",
   "main": "index.js",
   "scripts": {
+    "commit": "cz",
+    "release": "standard-version",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint src/**/*.{js,vue}",
     "test": "jest"
   },
   "repository": {
@@ -19,20 +23,54 @@
   "peerDependencies": {
     "@nrk/core-datepicker": "^3.0.8",
     "@webcomponents/custom-elements": "^1.3.2",
-    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.43.0",
+    "styleguide": "git+ssh://git@github.com/oslokommune/styleguide.git#0.44.0",
     "@chenfengyuan/vue-countdown": "^1.1.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.11.0",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.8.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue-a11y": "0.0.31",
+    "husky": "^4.3.0",
     "jest": "^26.2.2",
     "jest-axe": "^3.5.0",
     "jest-serializer-vue": "^2.0.2",
     "jest-transform-stub": "^2.0.0",
+    "standard-version": "^9.0.0",
+    "lint-staged": "^10.3.0",
     "vue": "^2.6.11",
     "vue-jest": "^3.0.6",
     "vue-template-compiler": "^2.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": "npm run lint:js -- --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

@@ -9,7 +9,7 @@
     >
       <slot>
         <option
-          v-for="selectOption in selectOptions" 
+          v-for="selectOption in selectOptions"
           :key="selectOption.value"
           :value="selectOption.value"
         >
@@ -47,11 +47,11 @@ export default {
   },
   computed: {
     selectValue: {
-      get() {
-        return this.value;
+      get () {
+        return this.value
       },
-      set(updatedValue) {
-        this.$emit("input", updatedValue);
+      set (updatedValue) {
+        this.$emit('input', updatedValue)
       }
     }
   }

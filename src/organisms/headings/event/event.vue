@@ -51,84 +51,81 @@
 </template>
 
 <script>
-  import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
-  import OsgVueInfoList from '../../../molecules/data_display/info_list/info_list.vue'
+import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
+import OsgVueInfoList from '../../../molecules/data_display/info_list/info_list.vue'
 
-  export default {
-    name: "OsgEvent",
+export default {
+  name: 'OsgEvent',
 
-    components: {
-      OsgVueFigure,
-      OsgVueInfoList,
+  components: {
+    OsgVueFigure,
+    OsgVueInfoList
+  },
+
+  props: {
+    title: {
+      type: String,
+      required: true
     },
 
-    props: {
-      title: {
-        type: String,
-        required: true,
-      },
+    imageUrl: {
+      type: String,
+      required: true
+    },
 
-      imageUrl: {
-        type: String,
-        required: true,
-      },
+    imageCaption: {
+      type: String
+    },
 
-      imageCaption: {
-        type: String,
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String
+    },
 
-      imageSrDescription: {
-        type: String
-      },
+    stateText: {
+      type: String
+    },
 
-      stateText: {
-        type: String,
-      },
+    calendarTitle: {
+      type: String,
+      required: true
+    },
 
-      calendarTitle: {
-        type: String,
-        required: true,
-      },
+    calendarText: {
+      type: String
+    },
 
-      calendarText: {
-        type: String,
-      },
+    calendarUrl: {
+      type: String
+    },
 
-      calendarUrl: {
-        type: String,
-      },
-      
-      locationTitle: {
-        type: String,
-        required: true,
-      },
+    locationTitle: {
+      type: String,
+      required: true
+    },
 
-      locationText: {
-        type: String,
-      },
+    locationText: {
+      type: String
+    },
 
-      locationUrlText: {
-        type: String,
-      },
+    locationUrlText: {
+      type: String
+    },
 
-      locationUrl: {
-        type: String,
-      }
+    locationUrl: {
+      type: String
     }
   }
+}
 </script>
-
-
-

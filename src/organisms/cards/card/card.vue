@@ -42,64 +42,64 @@
 </template>
 
 <script>
-  import OsgVueContentBox from '../../../molecules/content_display/content_box/content_box'
-  import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
+import OsgVueContentBox from '../../../molecules/content_display/content_box/content_box'
+import OsgVueFigure from '../../../atoms/decorators/figure/figure.vue'
 
-  export default {
-    name: 'OsgCard',
+export default {
+  name: 'OsgCard',
 
-    components: {
-      OsgVueContentBox,
-      OsgVueFigure
+  components: {
+    OsgVueContentBox,
+    OsgVueFigure
+  },
+
+  props: {
+    url: {
+      type: String,
+      default: null
     },
 
-    props: {
-      url: {
-        type: String,
-        default: null
-      },
+    urlTitle: {
+      type: String,
+      default: null
+    },
 
-      urlTitle: {
-        type: String,
-        default: null
-      },
+    imageUrl: {
+      type: String
+    },
 
-      imageUrl: {
-        type: String
-      },
+    imageUrlMobile: {
+      type: String
+    },
 
-      imageUrlMobile: {
-        type: String
-      },
+    imageUrlTablet: {
+      type: String
+    },
 
-      imageUrlTablet: {
-        type: String
-      },
+    imageUrlDesktop: {
+      type: String
+    },
 
-      imageUrlDesktop: {
-        type: String
-      },
+    imageSrDescription: {
+      type: String
+    },
 
-      imageSrDescription: {
-        type: String
-      },
+    stateText: {
+      type: String
+    },
 
-      stateText: {
-        type: String,
-      },
+    hasAnimation: {
+      type: Boolean,
+      default: false
+    },
 
-      hasAnimation: {
-        type: Boolean,
-        default: false
-      },
+    searchResult: {
+      type: String
+    },
 
-      searchResult: {
-        type: String
-      },
-
-      searchResultUrl: {
-        type: String
-      }
+    searchResultUrl: {
+      type: String
     }
   }
+}
 </script>

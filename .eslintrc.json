@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:vue-a11y/recommended",
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "vue-a11y/click-events-have-key-events": "off",
+    "vue-a11y/label-has-for": [
+      2,
+      {
+        "components": [
+          "label"
+        ],
+        "required": {
+          "some": [
+            "nesting",
+            "id"
+          ]
+        },
+        "allowChildren": false
+      }
+    ]
+  }
+}

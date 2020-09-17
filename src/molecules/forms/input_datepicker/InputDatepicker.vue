@@ -47,129 +47,218 @@
 </template>
 
 <script>
-  import OsgInputDate from "styleguide_vue/src/molecules/forms/input_date/InputDate";
-  import OsgVueIcon from "styleguide_vue/src/atoms/icons/icon/icon";
-  import CoreDatepicker from "@nrk/core-datepicker";
-  window.customElements.define("nrk-core-datepicker", CoreDatepicker);
+import OsgInputDate from 'styleguide_vue/src/molecules/forms/input_date/InputDate'
+import OsgVueIcon from 'styleguide_vue/src/atoms/icons/icon/icon'
+import CoreDatepicker from '@nrk/core-datepicker'
+window.customElements.define('nrk-core-datepicker', CoreDatepicker)
 
-  export default {
-    name: "OsgInputDatepicker",
-    components: {
-      OsgInputDate,
-      "osg-icon": OsgVueIcon
+export default {
+  name: 'OsgInputDatepicker',
+  components: {
+    OsgInputDate,
+    'osg-icon': OsgVueIcon
+  },
+  props: {
+    value: {
+      type: String
     },
-    props: {
-      value: {
-        type: String
-      },
-      label: {
-        type: String,
-        required: true
-      },
-      placeholder: {
-        type: String,
-        default: "dd.mm.åååå"
-      },
-      inputName: {
-        type: String,
-        default: ""
-      },
-      validation: {
-        type: Object
-      },
-      maxDate: {
-        type: Date
-      },
-      minDate: {
-        type: Date
-      }
+    label: {
+      type: String,
+      required: true
     },
-    data: function() {
-      return {
-        datepicker: null,
-        datepickerDate: new Date(Date.now()),
-        isDatepickerOpen: false
-      };
+    placeholder: {
+      type: String,
+      default: 'dd.mm.åååå'
     },
-    mounted: function() {
-      this.datepicker = this.$refs.datepicker;
-      this.datepicker.disabled = date => {
-        return (
-          (this.maxDate && date > this.maxDate.setHours(23, 59, 59, 999)) ||
+    inputName: {
+      type: String,
+      default: ''
+    },
+    validation: {
+      type: Object
+    },
+    maxDate: {
+      type: Date
+    },
+    minDate: {
+      type: Date
+    }
+  },
+  data: function () {
+    return {
+      datepicker: null,
+      datepickerDate: new Date(Date.now()),
+      isDatepickerOpen: false
+    }
+  },
+  mounted: function () {
+    this.datepicker = this.$refs.datepicker
+    this.datepicker.disabled = date => {
+      return (
+        (this.maxDate && date > this.maxDate.setHours(23, 59, 59, 999)) ||
           (this.minDate && date < this.minDate)
-        );
-      };
-      this.datepicker.addEventListener("datepicker.change", this.onDatepickerChange);
-      this.datepicker.addEventListener("datepicker.click.day", this.onDatepickerClickDay);
-      window.addEventListener("click", this.onDatepickerOutside);
-      window.addEventListener("keyup", this.onDatepickerOutside);
-    },
-    destroyed: function() {
-      this.datepicker.removeEventListener("datepicker.change", this.onDatepickerChange);
-      this.datepicker.removeEventListener("datepicker.click.day", this.onDatepickerClickDay);
-      window.removeEventListener("click", this.onDatepickerOutside);
-      window.removeEventListener("keyup", this.onDatepickerOutside);
-    },
-    computed: {
-      inputValue: {
-        get() {
-          return this.value;
-        },
-        set(inputValue) {
-          this.$emit("input", inputValue);
-        }
-      }
-    },
-    methods: {
-      onDatepickerOpen: function() {
-        this.isDatepickerOpen = true;
+      )
+    }
+    this.datepicker.addEventListener('datepicker.change', this.onDatepickerChange)
+    this.datepicker.addEventListener('datepicker.click.day', this.onDatepickerClickDay)
+    window.addEventListener('click', this.onDatepickerOutside)
+    window.addEventListener('keyup', this.onDatepickerOutside)
+  },
+  destroyed: function () {
+    this.datepicker.removeEventListener('datepicker.change', this.onDatepickerChange)
+    this.datepicker.removeEventListener('datepicker.click.day', this.onDatepickerClickDay)
+    window.removeEventListener('click', this.onDatepickerOutside)
+    window.removeEventListener('keyup', this.onDatepickerOutside)
+  },
+  computed: {
+    inputValue: {
+      get () {
+        return this.value
       },
-      onDatepickerClose: function() {
-        this.isDatepickerOpen = false;
-      },
-      onDatepickerOutside: function(event) {
-        if (!this.$el.contains(event.target)) {
-          this.isDatepickerOpen = false;
-        }
-      },
-      onDatepickerChange: function(event) {
-        this.datepickerDate = event.detail;
-      },
-      onDatepickerClickDay: function() {
-        this.$emit(
-          "input",
-          `${this.datepicker.day}.${this.datepicker.month}.${this.datepicker.year}`
-        );
-        this.onDatepickerClose();
-      },
-      datepickerPaginateMonth: function(step) {
-        if (this.datepicker) {
-          const next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step);
-          return Math.max(
-            this.minDate || 0,
-            Math.min(this.maxDate.setHours(23, 59, 59, 999) || Infinity, next)
-          );
-        }
-      },
-      datepickerPaginateMonthDisabled: function(step) {
-        if (this.datepicker) {
-          let next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step);
-          next = new Date(next).setDate(1);
-          return (step > 0 && next > this.maxDate) || next < this.minDate;
-        }
+      set (inputValue) {
+        this.$emit('input', inputValue)
       }
     }
-  };
+  },
+  methods: {
+    onDatepickerOpen: function () {
+      this.isDatepickerOpen = true
+    },
+    onDatepickerClose: function () {
+      this.isDatepickerOpen = false
+    },
+    onDatepickerOutside: function (event) {
+      if (!this.$el.contains(event.target)) {
+        this.isDatepickerOpen = false
+      }
+    },
+    onDatepickerChange: function (event) {
+      this.datepickerDate = event.detail
+    },
+    onDatepickerClickDay: function () {
+      this.$emit(
+        'input',
+          `${this.datepicker.day}.${this.datepicker.month}.${this.datepicker.year}`
+      )
+      this.onDatepickerClose()
+    },
+    datepickerPaginateMonth: function (step) {
+      if (this.datepicker) {
+        const next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step)
+        return Math.max(
+          this.minDate || 0,
+          Math.min(this.maxDate.setHours(23, 59, 59, 999) || Infinity, next)
+        )
+      }
+    },
+    datepickerPaginateMonthDisabled: function (step) {
+      if (this.datepicker) {
+        let next = new Date(this.datepickerDate).setMonth(this.datepickerDate.getMonth() + step)
+        next = new Date(next).setDate(1)
+        return (step > 0 && next > this.maxDate) || next < this.minDate
+      }
+    }
+  }
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "~styleguide/src/assets/sass/resources.sass";
+  .osg-input-datepicker {
+    position: relative;
+
+    &__label {
+      display: block;
+      position: relative;
+    }
+
+    &__input {
+      $icon-padding: $osg-space-2 * 2 + 32px;
+      border: 2px solid $osg-color-blue-dark;
+      box-sizing: border-box;
+      height: 50px;
+      outline: none;
+      padding: $osg-space-2 $icon-padding $osg-space-2 $osg-space-2;
+      width: 100%;
+
+      &:focus {
+        $focus-padding: $osg-space-2 - 2px;
+        border-width: 4px;
+        padding: $focus-padding $icon-padding - 2px $focus-padding $focus-padding;
+      }
+
+      &:focus,
+      &:hover {
+        border-color: $osg-color-blue-hover;
+      }
+
+      &[aria-invalid="true"] {
+        border-color: $osg-color-red;
+      }
+    }
+
+    &__icon {
+      bottom: $osg-space-2;
+      position: absolute;
+      right: $osg-space-2;
+    }
+
+    &__datepicker {
+      $padding: $osg-space-2;
+      background-color: $osg-color-white;
+      box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      padding: $padding;
+      position: absolute;
+      width: 290px + ($padding * 2);
+      z-index: 99;
+
+      &-nav,
+      &-nav-button {
+        border: 0 none;
+      }
+
+      &-nav-button {
+        background-color: transparent;
+        margin: 0 $osg-space-1;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        top: $osg-space-2;
+
+        &--next {
+          right: 0;
+        }
+        &--prev {
+          left: 0;
+        }
+
+        &:not(:disabled) {
+          cursor: pointer;
+
+          &:focus,
+          &:hover {
+            color: $osg-color-blue-hover;
+          }
+
+          &:focus {
+            outline: auto;
+          }
+        }
+      }
+
+      &-nav-icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
   /*
    * nrk-core-datepicker styling
-   * - Global styles to reach child component
    * - Element styles since missing classes on child component
    */
-  .osg-input-datepicker__datepicker-calendar {
+  .osg-input-datepicker__datepicker-calendar ::v-deep {
     caption,
     th {
       font-weight: normal;
@@ -227,99 +316,6 @@
         &:disabled {
           color: $osg-color-disabled;
         }
-      }
-    }
-  }
-</style>
-<style lang="scss" scoped>
-  @import "~styleguide/src/assets/sass/resources.sass";
-  .osg-input-datepicker {
-    position: relative;
-
-    &__label {
-      display: block;
-      position: relative;
-    }
-
-    &__input {
-      $icon-padding: $osg-space-2 * 2 + 32px;
-      border: 2px solid $osg-color-blue-dark;
-      box-sizing: border-box;
-      height: 50px;
-      outline: none;
-      padding: $osg-space-2 $icon-padding $osg-space-2 $osg-space-2;
-      width: 100%;
-
-      &:focus {
-        $focus-padding: $osg-space-2 - 2px;
-        border-width: 4px;
-        padding: $focus-padding $icon-padding - 2px $focus-padding $focus-padding;
-      }
-
-      &:focus,
-      &:hover {
-        border-color: $osg-color-blue-hover;
-      }
-
-      &[aria-invalid="true"] {
-        border-color: $osg-color-red;
-      }
-    }
-
-    &__icon {
-      bottom: $osg-space-2;
-      position: absolute;
-      right: $osg-space-2;
-    }
-
-    &__datepicker {
-      $padding: $osg-space-2;
-      background-color: $osg-color-white;
-      box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
-      display: flex;
-      justify-content: center;
-      margin-top: $osg-space-1 - $osg-space-4;
-      padding: $padding;
-      position: absolute;
-      width: 290px + ($padding * 2);
-      z-index: 7000;
-
-      &-nav,
-      &-nav-button {
-        border: 0 none;
-      }
-
-      &-nav-button {
-        background-color: transparent;
-        margin: 0 $osg-space-1;
-        outline: none;
-        padding: 0;
-        position: absolute;
-        top: $osg-space-2;
-
-        &--next {
-          right: 0;
-        }
-        &--prev {
-          left: 0;
-        }
-
-        &:not(:disabled) {
-          cursor: pointer;
-
-          &:focus,
-          &:hover {
-            color: $osg-color-blue-hover;
-          }
-
-          &:focus {
-            outline: auto;
-          }
-        }
-      }
-
-      &-nav-icon {
-        transform: rotate(90deg);
       }
     }
   }
