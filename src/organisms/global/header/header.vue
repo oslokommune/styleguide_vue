@@ -26,50 +26,49 @@
 </template>
 
 <script>
-  import OsgVueNavbarMenu from "../../../molecules/navigation/navbar_menu/navbar_menu.vue"
-  import OsgVueIcon from '../../../atoms/icons/icon/icon'
-  export default {
-    name: "OsgVueHeader",
+import OsgVueNavbarMenu from '../../../molecules/navigation/navbar_menu/navbar_menu.vue'
+import OsgVueIcon from '../../../atoms/icons/icon/icon'
+export default {
+  name: 'OsgVueHeader',
 
-    components: {
-      OsgVueNavbarMenu,
-      OsgVueIcon
+  components: {
+    OsgVueNavbarMenu,
+    OsgVueIcon
+  },
+
+  props: {
+    brandName: {
+      type: String,
+      required: true
     },
 
-    props: {
-      brandName: {
-        type: String,
-        required: true
-      },
-
-      brandUrl: {
-        type: String,
-        required: true
-      },
-
-      isOpen: {
-        type: Boolean,
-        default: false
-      },
-
-      buttonAriaLabel: {
-        type: String,
-        required: true
-      },
-
-      rootLevelLinkUrl: {
-        type: String,
-        required: true
-      },
-
-      rootLevelLinkText: {
-        type: String
-      },
-
-      rootLevelLinkTitle: {
-        type: String
-      }
+    brandUrl: {
+      type: String,
+      required: true
     },
+
+    isOpen: {
+      type: Boolean,
+      default: false
+    },
+
+    buttonAriaLabel: {
+      type: String,
+      required: true
+    },
+
+    rootLevelLinkUrl: {
+      type: String,
+      required: true
+    },
+
+    rootLevelLinkText: {
+      type: String
+    },
+
+    rootLevelLinkTitle: {
+      type: String
+    }
   }
+}
 </script>
-

@@ -34,46 +34,46 @@
 </template>
 
 <script>
-  export default {
-    name: "OsgPagination",
-    props: {
-      indexes: {
-        type: Array,
-        required: true
-      },
-      activeIndex: {
-        type: Number,
-        required: true
-      },
-      paginate: {
-        type: Function,
-        required: true
-      },
-      limit: {
-        type: Number,
-        default: 2
-      }
+export default {
+  name: 'OsgPagination',
+  props: {
+    indexes: {
+      type: Array,
+      required: true
     },
-    computed: {
-      limitMax: function() {
-        return this.activeIndex + this.limit;
-      },
-      limitMin: function() {
-        return this.activeIndex - this.limit;
-      }
+    activeIndex: {
+      type: Number,
+      required: true
     },
-    methods: {
-      showItem: function(index) {
-        const isFirst = index === 1;
-        const isLast = index === this.indexes.length;
-        const isWithinLimit = index >= this.limitMin && index <= this.limitMax;
-        return isFirst || isLast || isWithinLimit;
-      },
-      showSpacer: function(index) {
-        return index >= this.limitMin - 1 && index <= this.limitMax + 1;
-      }
+    paginate: {
+      type: Function,
+      required: true
+    },
+    limit: {
+      type: Number,
+      default: 2
     }
-  };
+  },
+  computed: {
+    limitMax: function () {
+      return this.activeIndex + this.limit
+    },
+    limitMin: function () {
+      return this.activeIndex - this.limit
+    }
+  },
+  methods: {
+    showItem: function (index) {
+      const isFirst = index === 1
+      const isLast = index === this.indexes.length
+      const isWithinLimit = index >= this.limitMin && index <= this.limitMax
+      return isFirst || isLast || isWithinLimit
+    },
+    showSpacer: function (index) {
+      return index >= this.limitMin - 1 && index <= this.limitMax + 1
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

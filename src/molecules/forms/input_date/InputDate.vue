@@ -24,75 +24,75 @@
 </template>
 
 <script>
-  import OsgVueIcon from "styleguide_vue/src/atoms/icons/icon/icon";
+import OsgVueIcon from 'styleguide_vue/src/atoms/icons/icon/icon'
 
-  export default {
-    name: "OsgInputDate",
-    components: {
-      "osg-icon": OsgVueIcon
+export default {
+  name: 'OsgInputDate',
+  components: {
+    'osg-icon': OsgVueIcon
+  },
+  props: {
+    type: {
+      type: String,
+      default: 'date'
     },
-    props: {
-      type: {
-        type: String,
-        default: "date"
-      },
-      value: {
-        type: String
-      },
-      label: {
-        type: String,
-        required: true
-      },
-      placeholder: {
-        type: String,
-        default: "dd.mm.åååå"
-      },
-      inputName: {
-        type: String,
-        default: ""
-      },
-      validation: {
-        type: Object
-      },
-      maxDate: {
-        type: Date
-      },
-      minDate: {
-        type: Date
-      },
-      onFocus: {
-        type: Function,
-        default: () => {}
-      }
+    value: {
+      type: String
     },
-    computed: {
-      max: function() {
-        if(!this.maxDate) {
-          return;
-        }
-        return this.formatDateObjToIso(this.maxDate);
-      },
-      min: function() {
-        if(!this.minDate) {
-          return;
-        }
-        return this.formatDateObjToIso(this.minDate);
-      },
-      isInvalid: function() {
-        return this.validation && !!this.validation.isValid;
-      }
+    label: {
+      type: String,
+      required: true
     },
-    methods: {
-      formatDateObjToIso: date => {
-        const day = `${date.getDate()}`.padStart(2, "0");
-        const month = `${date.getMonth() + 1}`.padStart(2, "0");
-        return `${date.getFullYear()}-${month}-${day}`;
-      },
-      onFocusHandler: function(event) {
-        return this.onFocus(event);
-      }
+    placeholder: {
+      type: String,
+      default: 'dd.mm.åååå'
+    },
+    inputName: {
+      type: String,
+      default: ''
+    },
+    validation: {
+      type: Object
+    },
+    maxDate: {
+      type: Date
+    },
+    minDate: {
+      type: Date
+    },
+    onFocus: {
+      type: Function,
+      default: () => {}
     }
-  };
+  },
+  computed: {
+    max: function () {
+      if (!this.maxDate) {
+        return
+      }
+      return this.formatDateObjToIso(this.maxDate)
+    },
+    min: function () {
+      if (!this.minDate) {
+        return
+      }
+      return this.formatDateObjToIso(this.minDate)
+    },
+    isInvalid: function () {
+      return this.validation && !!this.validation.isValid
+    }
+  },
+  methods: {
+    formatDateObjToIso: date => {
+      const day = `${date.getDate()}`.padStart(2, '0')
+      const month = `${date.getMonth() + 1}`.padStart(2, '0')
+      return `${date.getFullYear()}-${month}-${day}`
+    },
+    onFocusHandler: function (event) {
+      return this.onFocus(event)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

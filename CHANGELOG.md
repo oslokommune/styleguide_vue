@@ -8,9 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - YYYY-MM-DD
 
 ### Fixed
+- organisms-headings-carousel: fixes missing caption & missplaced srDescription prop passed to figure component
 - organisms-headings-carousel: fixes mobile font size
+- molecules-forms-input-datepicker: remove negative top margin
+- molecules-forms-input-datepicker: change z index
 
 ### Added
+- build: eslint
 
 ### Removed
 

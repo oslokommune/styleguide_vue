@@ -8,7 +8,7 @@
         <slot name="title" />
       </div>
       <osg-vue-button
-        @click="$emit('toggleState')"
+        :on-click="() => $emit('toggleState')"
         :is-circle="true"
         color="yellow"
         :attrs="buttonAttrs"
@@ -30,61 +30,63 @@
 </template>
 
 <script>
-  import OsgVueButton from '../../../atoms/buttons/button/button'
-  import OsgVueIcon from '../../../atoms/icons/icon/icon'
-  import {generateUuid} from '../../../mixins/generateUuid.js'
+import OsgVueButton from '../../../atoms/buttons/button/button'
+import OsgVueIcon from '../../../atoms/icons/icon/icon'
+import { generateUuid } from '../../../mixins/generateUuid.js'
 
-  export default {
-    name: 'OsgVueExpandBox',
+export default {
+  name: 'OsgVueExpandBox',
 
-    components: {
-      OsgVueButton,
-      OsgVueIcon
-    },
+  components: {
+    OsgVueButton,
+    OsgVueIcon
+  },
 
-    mixins: [generateUuid],
+  mixins: [generateUuid],
 
-    props: {
-      icons: {
-        type: Object,
-        default: {
+  props: {
+    icons: {
+      type: Object,
+      default: () => {
+        return {
           expanded: 'chevron-up',
           collapsed: 'chevron-down'
-        },
-        required: true
-      },
-
-      isExpanded: {
-        type: Boolean,
-        required: false
-      },
-
-      buttonAriaLabel: {
-        type: String,
-        required: true
-      }
-    },
-
-    data: () => ({
-      id: null
-    }),
-
-    computed: {
-      iconName() {
-        return this.isExpanded ? this.icons.expanded : this.icons.collapsed
-      },
-
-      buttonAttrs() {
-        return {
-          'aria-controls': this.id,
-          'aria-expanded': this.isExpanded + '',
-          'aria-label': this.buttonAriaLabel
         }
-      }
+      },
+      required: true
     },
 
-    mounted() {
-      this.id = this.generateUuid()
+    isExpanded: {
+      type: Boolean,
+      required: false
+    },
+
+    buttonAriaLabel: {
+      type: String,
+      required: true
     }
+  },
+
+  data: () => ({
+    id: null
+  }),
+
+  computed: {
+    iconName () {
+      return this.isExpanded ? this.icons.expanded : this.icons.collapsed
+    },
+
+    buttonAttrs () {
+      return {
+        'aria-controls': this.id,
+        'aria-expanded': this.isExpanded + '',
+        'aria-label': this.buttonAriaLabel
+      }
+    }
+  },
+
+  mounted () {
+    this.id = this.generateUuid()
   }
+}
 </script>
