@@ -79,8 +79,9 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 // stylefix for the extra element that vue-countdown adds
-.osg-countdown > div
-  flex-basis: 40%
+.osg-countdown > div {
+  flex-basis: 40%;
+}
 </style>
