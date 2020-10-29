@@ -1,19 +1,19 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### 0.0.10 (2020-10-29)
 
-## [Unreleased] - YYYY-MM-DD
 
-### Fixed
+### Features
 
-### Added
+* **input-date:** export from index ([9616310](https://github.com/oslokommune/styleguide_vue/commit/9616310dc557d94aef89a7c39bae4cfc645ea4d9))
+* **input-datepicker:** export from index ([3d06d92](https://github.com/oslokommune/styleguide_vue/commit/3d06d92d714a1a8f7d90852b32e3fa98856a8b84))
+* **pagination:** export from index ([1fe818a](https://github.com/oslokommune/styleguide_vue/commit/1fe818aa3f0849e871e40fbc6d3ff24c74ca0c12))
 
-### Removed
+### Bug Fixes
 
-### Changed
+* **carousel:** remove caption from figure ([1285729](https://github.com/oslokommune/styleguide_vue/commit/1285729ad8d07ae05ef432a0936347b8a80aabb8))
 
 ## [0.0.9] - 2020-09-17
 

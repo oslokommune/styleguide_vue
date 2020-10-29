@@ -1,6 +1,6 @@
 {
   "name": "styleguide_vue",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Oslo Styleguide - Vue atomic patterns",
   "main": "index.js",
   "scripts": {
