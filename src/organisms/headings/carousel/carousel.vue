@@ -8,6 +8,7 @@
       >
         <div class="osg-carousel__slides" ref="slides">
           <osg-vue-figure
+            class="osg-carousel__slide"
             :id="`image_${index}`"
             :key="image.url"
             v-for="(image, index) of this.images"
@@ -265,10 +266,6 @@ export default {
       this.$refs.slides.appendChild(firstSlideClone)
 
       this.slides = this.htmlCollectionToArray(this.$refs.slides.children)
-
-      for (const slide of this.slides) {
-        slide.classList.add('osg-carousel__slide')
-      }
     },
 
     /**
