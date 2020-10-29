@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["v-deep"]
+      }
+    ],
+    "media-feature-name-disallowed-list": [
+      "max-width",
+      {
+        "message": "Use min-width for a mobile-first approach (media-feature-name-blacklist)",
+        "severity": "warning"
+      }
+    ],
+    "scss/at-extend-no-missing-placeholder": true
+  }
+}

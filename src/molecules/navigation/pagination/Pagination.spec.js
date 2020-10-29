@@ -1,9 +1,8 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import Pagination from './Pagination.vue'
-import InputDate from "../../forms/input_date/InputDate";
 
-let wrapper;
+let wrapper
 
 beforeEach(() => {
   wrapper = shallowMount(Pagination, {
@@ -12,23 +11,22 @@ beforeEach(() => {
       activeIndex: 0,
       paginate: () => {}
     }
-  });
-});
+  })
+})
 
 afterEach(() => {
-  wrapper.destroy();
-});
+  wrapper.destroy()
+})
 
 describe('Pagination.vue', () => {
-
   it('is rendered', () => {
-    expect(wrapper.find('.osg-pagination')).toBeTruthy();
+    expect(wrapper.find('.osg-pagination')).toBeTruthy()
   })
 
   it('has no axe violations', async () => {
     const results = await axe(wrapper.element, {
       rules: {
-        'region': { enabled: false }
+        region: { enabled: false }
       }
     })
     expect.extend(toHaveNoViolations)
@@ -43,7 +41,7 @@ describe('Pagination.vue', () => {
         activeIndex: 0,
         paginate: spy
       }
-    });
+    })
 
     wrapper.find('.osg-pagination__item:not(:disabled)').trigger('click')
     expect(spy).toBeCalled()
@@ -58,10 +56,9 @@ describe('Pagination.vue', () => {
         activeIndex: 0,
         paginate: spy
       }
-    });
+    })
 
     wrapper.find('.osg-pagination__item').trigger('click')
     expect(spy).not.toBeCalled()
   })
-
-});
+})

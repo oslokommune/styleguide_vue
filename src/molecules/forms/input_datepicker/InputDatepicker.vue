@@ -164,6 +164,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "~styleguide/src/assets/sass/resources.sass";
+
   .osg-input-datepicker {
     position: relative;
 
@@ -174,6 +175,7 @@ export default {
 
     &__input {
       $icon-padding: $osg-space-2 * 2 + 32px;
+
       border: 2px solid $osg-color-blue-dark;
       box-sizing: border-box;
       height: 50px;
@@ -183,6 +185,7 @@ export default {
 
       &:focus {
         $focus-padding: $osg-space-2 - 2px;
+
         border-width: 4px;
         padding: $focus-padding $icon-padding - 2px $focus-padding $focus-padding;
       }
@@ -205,6 +208,7 @@ export default {
 
     &__datepicker {
       $padding: $osg-space-2;
+
       background-color: $osg-color-white;
       box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
       display: flex;
@@ -230,6 +234,7 @@ export default {
         &--next {
           right: 0;
         }
+
         &--prev {
           left: 0;
         }
