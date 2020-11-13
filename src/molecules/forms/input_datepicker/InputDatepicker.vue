@@ -271,6 +271,7 @@ export default {
     }
 
     th {
+      font-size: $osg-font-size-13;
       padding: $osg-space-1 0;
       text-align: center;
       text-transform: capitalize;
