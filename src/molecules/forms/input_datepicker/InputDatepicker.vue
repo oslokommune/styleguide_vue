@@ -13,7 +13,7 @@
       class="osg-input-datepicker__datepicker"
       ref="datepicker"
       v-show="isDatepickerOpen"
-      days="m,t,o,t,f,l,s"
+      days="mån,tir,ons,tor,fre,lør,søn"
     >
       <fieldset class="osg-input-datepicker__datepicker-nav">
         <button
@@ -224,12 +224,15 @@ export default {
       }
 
       &-nav-button {
-        background-color: transparent;
+        @include osg-common-button-circle;
+
         margin: 0 $osg-space-1;
-        outline: none;
-        padding: 0;
         position: absolute;
         top: $osg-space-2;
+
+        &:not(:disabled) {
+          cursor: pointer;
+        }
 
         &--next {
           right: 0;
@@ -237,19 +240,6 @@ export default {
 
         &--prev {
           left: 0;
-        }
-
-        &:not(:disabled) {
-          cursor: pointer;
-
-          &:focus,
-          &:hover {
-            color: $osg-color-blue-hover;
-          }
-
-          &:focus {
-            outline: auto;
-          }
         }
       }
 
@@ -294,7 +284,7 @@ export default {
 
         // next/prev month
         &[data-adjacent="true"] {
-          font-size: 14px;
+          font-size: $osg-font-size-13;
         }
 
         &:not(:disabled) {
