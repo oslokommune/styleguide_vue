@@ -300,11 +300,13 @@ export default {
         // selected
         &[autofocus] {
           background-color: $osg-color-blue-dark;
+          border-color: $osg-color-blue-dark;
           color: $osg-color-white;
 
           &:focus,
           &:hover {
             background-color: $osg-color-blue-hover;
+            border-color: $osg-color-blue-hover;
             color: $osg-color-white;
           }
         }
