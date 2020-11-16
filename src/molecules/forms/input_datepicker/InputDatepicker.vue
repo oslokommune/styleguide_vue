@@ -260,6 +260,7 @@ export default {
     }
 
     caption {
+      font-size: $osg-font-size-18;
       margin-bottom: $osg-space-2;
       margin-top: $osg-space-1;
       text-transform: capitalize;
